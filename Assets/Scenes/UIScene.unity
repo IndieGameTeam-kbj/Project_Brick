@@ -597,6 +597,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01a17302d87d8fd4797e39053e84fc0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LogoAlphabet
+  _startOffset: 1350
+  _animationDuration: 1.2
+  _rotation: 680
 --- !u!1 &395507118
 GameObject:
   m_ObjectHideFlags: 0
@@ -1188,6 +1191,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01a17302d87d8fd4797e39053e84fc0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LogoAlphabet
+  _startOffset: 1200
+  _animationDuration: 1.7
+  _rotation: 720
 --- !u!1 &668568197
 GameObject:
   m_ObjectHideFlags: 0
@@ -1630,6 +1636,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01a17302d87d8fd4797e39053e84fc0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LogoAlphabet
+  _startOffset: 1450
+  _animationDuration: 1.1
+  _rotation: 315
 --- !u!1 &1030510537
 GameObject:
   m_ObjectHideFlags: 0
@@ -1718,6 +1727,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01a17302d87d8fd4797e39053e84fc0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LogoAlphabet
+  _startOffset: 1100
+  _animationDuration: 1.6
+  _rotation: 1000
 --- !u!1 &1345095414
 GameObject:
   m_ObjectHideFlags: 0
@@ -1806,6 +1818,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01a17302d87d8fd4797e39053e84fc0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LogoAlphabet
+  _startOffset: 1550
+  _animationDuration: 1.5
+  _rotation: 230
 --- !u!1 &1662318449
 GameObject:
   m_ObjectHideFlags: 0
@@ -2150,6 +2165,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01a17302d87d8fd4797e39053e84fc0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LogoAlphabet
+  _startOffset: 1650
+  _animationDuration: 1.7
+  _rotation: 540
 --- !u!1 &1850675595
 GameObject:
   m_ObjectHideFlags: 0
