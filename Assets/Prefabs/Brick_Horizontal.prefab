@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: -4374708064145462289}
   - component: {fileID: -7763513050107765192}
   - component: {fileID: 8193784022375432671}
+  - component: {fileID: -2393253710001016715}
   m_Layer: 0
   m_Name: Brick_Horizontal
   m_TagString: Untagged
@@ -214,3 +215,23 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &-2393253710001016715
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9097663397063738304}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d394c5f0731ce94cbd8305afef38375, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LineBlock
+  up: 0
+  down: 0
+  left: 1
+  right: 1
+  upLeft: 0
+  upRight: 0
+  downLeft: 0
+  downRight: 0
