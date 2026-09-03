@@ -27,6 +27,9 @@ public class DraggableBlock : MonoBehaviour
     // 현재 블록을 드래그하고 있는지 저장
     private bool isDragging;
 
+    // 블록이 처음 생성된 위치
+    private Vector3 spawnPosition;
+
 
     // 오브젝트가 생성될 때 가장 먼저 실행됨
     private void Awake()
@@ -35,6 +38,11 @@ public class DraggableBlock : MonoBehaviour
         blockCollider = GetComponentInChildren<Collider2D>();
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         originalSortingOrder = spriteRenderer.sortingOrder;
+    }
+    private void Start()
+    {
+        // 블록이 처음 생성된 위치를 저장
+        spawnPosition = transform.position;
     }
 
     // 게임이 실행되는 동안 매 프레임 호출됨
@@ -106,12 +114,17 @@ public class DraggableBlock : MonoBehaviour
     // 손가락을 놓았을 때 실행되는 함수
     private void EndDrag()
     {
-        // 더 이상 드래그 중이 아니라고 표시
         isDragging = false;
 
-        // 드래그하기 전 SpriteRenderer 출력 순서로 복구
         spriteRenderer.sortingOrder =
             originalSortingOrder;
 
+        // 타일맵 밖에서 손을 놓으면 스폰 위치로 복귀
+        if (!PlacementPointManager.Instance.IsInsideBoard(
+            transform.position))
+        {
+            transform.position = spawnPosition;
+            return;
+        }
     }
 }
