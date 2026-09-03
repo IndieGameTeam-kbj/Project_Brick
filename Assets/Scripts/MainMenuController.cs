@@ -15,8 +15,14 @@ public class MainMenuController : MonoBehaviour
 
     private float _logoAnimationDelay = 0.5f;
     private bool _isMute = false;
+    private float _time = 0.0f;
 
     private void Awake()
+    {
+        Init();
+    }
+
+    public void Init()
     {
         _continueButton.SetActive(false);
         StartCoroutine(PlayLogoAnimation());
