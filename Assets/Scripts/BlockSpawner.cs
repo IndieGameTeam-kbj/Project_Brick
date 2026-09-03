@@ -38,6 +38,11 @@ public class BlockSpawner : MonoBehaviour
                 spawnedBlock.GetComponent<DraggableBlock>();
 
             draggableBlock.Initialize(this);
+
+            BlockSpawnEffect spawnEffect =
+                spawnedBlock.GetComponent<BlockSpawnEffect>();
+
+            spawnEffect.Play();
         }
     }
 
