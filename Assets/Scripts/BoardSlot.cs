@@ -2,20 +2,20 @@ using UnityEngine;
 
 public class BoardSlot : MonoBehaviour
 {
-    // 현재 이 슬롯에 블록이 있는지
-    private bool isOccupied;
+    private LineBlock placedBlock;
 
-    public bool IsOccupied => isOccupied;
+    public bool IsOccupied => placedBlock != null;
+    public LineBlock PlacedBlock => placedBlock;
 
-    // 슬롯에 블록이 배치됐을 때 호출
-    public void Occupy()
+    // 블록이 슬롯에 배치됐을 때 호출
+    public void Occupy(LineBlock block)
     {
-        isOccupied = true;
+        placedBlock = block;
     }
 
-    // 슬롯에서 블록이 제거됐을 때 호출
+    // 블록이 제거됐을 때 호출
     public void Clear()
     {
-        isOccupied = false;
+        placedBlock = null;
     }
 }

@@ -8,6 +8,9 @@ public class BlockSpawner : MonoBehaviour
     [Header("블록 생성 위치 3개")]
     [SerializeField] private Transform[] spawnPoints;
 
+    [SerializeField]
+    private LineConnectionChecker connectionChecker;
+
     // 현재 묶음에서 배치된 블록 개수
     private int placedBlockCount;
 
@@ -37,7 +40,10 @@ public class BlockSpawner : MonoBehaviour
             DraggableBlock draggableBlock =
                 spawnedBlock.GetComponent<DraggableBlock>();
 
-            draggableBlock.Initialize(this);
+            draggableBlock.Initialize(
+                this,
+                connectionChecker
+            );
 
             BlockSpawnEffect spawnEffect =
                 spawnedBlock.GetComponent<BlockSpawnEffect>();

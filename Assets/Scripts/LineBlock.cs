@@ -14,13 +14,32 @@ public class LineBlock : MonoBehaviour
     [SerializeField] private bool downLeft;
     [SerializeField] private bool downRight;
 
-    public bool Up => up;
-    public bool Down => down;
-    public bool Left => left;
-    public bool Right => right;
+    public bool HasConnection(Vector2Int direction)
+    {
+        if (direction == Vector2Int.up)
+            return up;
 
-    public bool UpLeft => upLeft;
-    public bool UpRight => upRight;
-    public bool DownLeft => downLeft;
-    public bool DownRight => downRight;
+        if (direction == Vector2Int.down)
+            return down;
+
+        if (direction == Vector2Int.left)
+            return left;
+
+        if (direction == Vector2Int.right)
+            return right;
+
+        if (direction == new Vector2Int(-1, 1))
+            return upLeft;
+
+        if (direction == new Vector2Int(1, 1))
+            return upRight;
+
+        if (direction == new Vector2Int(-1, -1))
+            return downLeft;
+
+        if (direction == new Vector2Int(1, -1))
+            return downRight;
+
+        return false;
+    }
 }

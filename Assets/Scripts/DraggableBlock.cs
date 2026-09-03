@@ -40,6 +40,15 @@ public class DraggableBlock : MonoBehaviour
     /// 블록을 생성하는 BlockSpawner를 참조하기 위한 변수
     private BlockSpawner blockSpawner;
 
+    // 블록이 배치된 BoardSlot을 참조하기 위한 변수
+    private BoardSlot placedSlot;
+
+    // 블록의 연결 정보를 저장하는 LineBlock
+    private LineBlock lineBlock;
+
+    // 블록이 배치된 후 연결 상태를 검사하는 LineConnectionChecker
+    private LineConnectionChecker connectionChecker;
+
 
     // 오브젝트가 생성될 때 가장 먼저 실행됨
     private void Awake()
@@ -47,8 +56,9 @@ public class DraggableBlock : MonoBehaviour
         mainCamera = Camera.main;
         blockCollider = GetComponentInChildren<Collider2D>();
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
-        originalSortingOrder = spriteRenderer.sortingOrder;
         snapMover = GetComponent<BlockSnapMover>();
+        lineBlock = GetComponent<LineBlock>();
+        originalSortingOrder = spriteRenderer.sortingOrder;
     }
     private void Start()
     {
@@ -153,10 +163,13 @@ public class DraggableBlock : MonoBehaviour
             return;
         }
 
-        // 빈 슬롯에 블록 배치
-        isPlaced = true;
+        // 배치된 슬롯 저장
+        placedSlot = nearestSlot;
 
-        nearestSlot.Occupy();
+        // 블록을 슬롯 위치로 스냅 이동
+        placedSlot.Occupy(lineBlock);
+
+        isPlaced = true;
 
         Vector3 targetPosition = new Vector3(
             nearestSlot.transform.position.x,
@@ -164,14 +177,28 @@ public class DraggableBlock : MonoBehaviour
             transform.position.z
         );
 
+        // 이동이 끝나면 OnSnapCompleted 실행
         snapMover.MoveTo(
             targetPosition,
-            blockSpawner.NotifyBlockPlaced
+            OnSnapCompleted
         );
     }
 
-    public void Initialize(BlockSpawner newBlockSpawner)
+    // 슬롯까지 이동이 끝난 후 실행
+    private void OnSnapCompleted()
+    {
+        // 배치된 슬롯에서 선 연결 검사
+        connectionChecker.CheckFrom(placedSlot);
+
+        // 사용한 블록 개수 증가
+        blockSpawner.NotifyBlockPlaced();
+    }
+
+    public void Initialize(
+     BlockSpawner newBlockSpawner,
+     LineConnectionChecker newConnectionChecker)
     {
         blockSpawner = newBlockSpawner;
+        connectionChecker = newConnectionChecker;
     }
 }
