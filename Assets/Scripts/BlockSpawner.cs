@@ -8,8 +8,8 @@ public class BlockSpawner : MonoBehaviour
     [Header("블록 생성 위치 3개")]
     [SerializeField] private Transform[] spawnPoints;
 
-    // 생성된 블록들을 저장할 배열
-    private GameObject[] spawnedBlocks;
+    // 현재 묶음에서 배치된 블록 개수
+    private int placedBlockCount;
 
     // 시작 시점에 블록을 생성하는 메서드 호출
     private void Start()
@@ -20,22 +20,36 @@ public class BlockSpawner : MonoBehaviour
     // 블록을 생성하는 메서드
     public void SpawnThreeBlocks()
     {
-        // spawnedBlocks 배열을 spawnPoints 배열의 길이로 초기화
-        spawnedBlocks = new GameObject[spawnPoints.Length];
-
+        placedBlockCount = 0;
         // spawnPoints 배열의 각 위치에 대해 블록을 생성
         for (int i = 0; i < spawnPoints.Length; i++)
         {
-            // 랜덤으로 블록 프리팹을 선택
-            int randomIndex = Random.Range(0, blockPrefabs.Length);
-            GameObject selectedPrefab = blockPrefabs[randomIndex];
+            int randomIndex =
+                Random.Range(0, blockPrefabs.Length);
 
-            // 선택된 프리팹을 해당 위치에 생성하고 spawnedBlocks 배열에 저장
-            spawnedBlocks[i] = Instantiate(
-                selectedPrefab,
+            GameObject spawnedBlock = Instantiate(
+                blockPrefabs[randomIndex],
                 spawnPoints[i].position,
                 Quaternion.identity
             );
+
+            // 생성된 블록에 자신의 참조를 전달
+            DraggableBlock draggableBlock =
+                spawnedBlock.GetComponent<DraggableBlock>();
+
+            draggableBlock.Initialize(this);
+        }
+    }
+
+    // 블록 하나가 보드에 정상 배치됐을 때 호출
+    public void NotifyBlockPlaced()
+    {
+        placedBlockCount++;
+
+        // 생성된 블록 3개가 모두 배치됐다면
+        if (placedBlockCount >= spawnPoints.Length)
+        {
+            SpawnThreeBlocks();
         }
     }
 }
