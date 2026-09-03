@@ -94,8 +94,7 @@ public class DraggableBlock : MonoBehaviour
     {
         isDragging = true;
 
-        spriteRenderer.sortingOrder =
-            draggingSortingOrder;
+        spriteRenderer.sortingOrder = draggingSortingOrder;
 
         // 누르는 즉시 블록을 손가락 위로 이동
         Drag(pointerPosition);
@@ -116,8 +115,7 @@ public class DraggableBlock : MonoBehaviour
     {
         isDragging = false;
 
-        spriteRenderer.sortingOrder =
-            originalSortingOrder;
+        spriteRenderer.sortingOrder =  originalSortingOrder;
 
         // 타일맵 밖에서 손을 놓으면 스폰 위치로 복귀
         if (!PlacementPointManager.Instance.IsInsideBoard(
@@ -126,5 +124,27 @@ public class DraggableBlock : MonoBehaviour
             transform.position = spawnPosition;
             return;
         }
+
+        // 가장 가까운 빈 슬롯 찾기
+        BoardSlot nearestSlot =
+            PlacementPointManager.Instance.GetNearestEmptySlot(
+                transform.position
+            );
+
+        // 빈 슬롯이 없으면 생성 위치로 복귀
+        if (nearestSlot == null)
+        {
+            transform.position = spawnPosition;
+            return;
+        }
+
+        // 빈 슬롯에 블록 배치
+        transform.position = new Vector3(
+            nearestSlot.transform.position.x,
+            nearestSlot.transform.position.y,
+            transform.position.z
+        );
+
+        nearestSlot.Occupy();
     }
 }
