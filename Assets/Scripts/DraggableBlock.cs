@@ -30,6 +30,9 @@ public class DraggableBlock : MonoBehaviour
     // 블록이 처음 생성된 위치
     private Vector3 spawnPosition;
 
+    // 블록이 배치되었는지 여부
+    private bool isPlaced;
+
 
     // 오브젝트가 생성될 때 가장 먼저 실행됨
     private void Awake()
@@ -48,6 +51,10 @@ public class DraggableBlock : MonoBehaviour
     // 게임이 실행되는 동안 매 프레임 호출됨
     private void Update()
     {
+        // 블록이 이미 배치되었다면 드래그를 처리하지 않음
+        if (isPlaced)
+            return;
+
         // 현재 마우스나 터치 입력이 없다면 종료
         if (Pointer.current == null)
             return;
@@ -146,5 +153,7 @@ public class DraggableBlock : MonoBehaviour
         );
 
         nearestSlot.Occupy();
+
+        isPlaced = true;
     }
 }
