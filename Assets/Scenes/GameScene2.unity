@@ -160,7 +160,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1678267}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e6375d188ee7054988d626f2d40354a, type: 3}
+  m_Script: {fileID: 11500000, guid: d2a1d398dcd86ce449b1577fd90a181e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BoardSlot
 --- !u!1 &26946944
@@ -204,7 +204,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 26946944}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e6375d188ee7054988d626f2d40354a, type: 3}
+  m_Script: {fileID: 11500000, guid: d2a1d398dcd86ce449b1577fd90a181e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BoardSlot
 --- !u!1 &85045921
@@ -284,10 +284,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 146116387}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e6375d188ee7054988d626f2d40354a, type: 3}
+  m_Script: {fileID: 11500000, guid: d2a1d398dcd86ce449b1577fd90a181e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BoardSlot
---- !u!1 &208562853
+--- !u!1 &192394839
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -295,42 +295,43 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 208562855}
-  - component: {fileID: 208562854}
+  - component: {fileID: 192394840}
+  - component: {fileID: 192394841}
   m_Layer: 0
-  m_Name: BlockDestroyer
+  m_Name: InputManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &208562854
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 208562853}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5dd9b241f0538ec4195ce2d32c26eddd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BlockDestroyer
---- !u!4 &208562855
+--- !u!4 &192394840
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 208562853}
+  m_GameObject: {fileID: 192394839}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.14274, y: 0.51569, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1718294225}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &192394841
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 192394839}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb3dda782091175449823e8c2e8d6580, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InputManager
+  _inputActions: {fileID: -944628639613478452, guid: 699a62c903a756d479f60d45abac1d10, type: 3}
 --- !u!1 &227603556
 GameObject:
   m_ObjectHideFlags: 0
@@ -372,7 +373,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 227603556}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e6375d188ee7054988d626f2d40354a, type: 3}
+  m_Script: {fileID: 11500000, guid: d2a1d398dcd86ce449b1577fd90a181e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BoardSlot
 --- !u!1 &287644112
@@ -416,7 +417,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 287644112}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e6375d188ee7054988d626f2d40354a, type: 3}
+  m_Script: {fileID: 11500000, guid: d2a1d398dcd86ce449b1577fd90a181e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BoardSlot
 --- !u!1 &297425867
@@ -429,7 +430,7 @@ GameObject:
   m_Component:
   - component: {fileID: 297425868}
   m_Layer: 0
-  m_Name: PlacementPoints
+  m_Name: BrickPlacedPoints
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -496,7 +497,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 324421553}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e6375d188ee7054988d626f2d40354a, type: 3}
+  m_Script: {fileID: 11500000, guid: d2a1d398dcd86ce449b1577fd90a181e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BoardSlot
 --- !u!1 &417504822
@@ -540,7 +541,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 417504822}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e6375d188ee7054988d626f2d40354a, type: 3}
+  m_Script: {fileID: 11500000, guid: d2a1d398dcd86ce449b1577fd90a181e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BoardSlot
 --- !u!1 &476142244
@@ -584,7 +585,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 476142244}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e6375d188ee7054988d626f2d40354a, type: 3}
+  m_Script: {fileID: 11500000, guid: d2a1d398dcd86ce449b1577fd90a181e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BoardSlot
 --- !u!1 &501061025
@@ -628,7 +629,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 501061025}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e6375d188ee7054988d626f2d40354a, type: 3}
+  m_Script: {fileID: 11500000, guid: d2a1d398dcd86ce449b1577fd90a181e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BoardSlot
 --- !u!1 &501223882
@@ -672,40 +673,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 501223882}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e6375d188ee7054988d626f2d40354a, type: 3}
+  m_Script: {fileID: 11500000, guid: d2a1d398dcd86ce449b1577fd90a181e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BoardSlot
---- !u!1 &865904935
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 865904936}
-  m_Layer: 0
-  m_Name: Bricks
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &865904936
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 865904935}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.01, y: -5.26, z: 6.75128}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &868432209
 GameObject:
   m_ObjectHideFlags: 0
@@ -848,7 +818,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 913357092}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e6375d188ee7054988d626f2d40354a, type: 3}
+  m_Script: {fileID: 11500000, guid: d2a1d398dcd86ce449b1577fd90a181e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BoardSlot
 --- !u!1 &978061648
@@ -892,7 +862,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 978061648}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e6375d188ee7054988d626f2d40354a, type: 3}
+  m_Script: {fileID: 11500000, guid: d2a1d398dcd86ce449b1577fd90a181e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BoardSlot
 --- !u!1 &1015730707
@@ -936,7 +906,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1015730707}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e6375d188ee7054988d626f2d40354a, type: 3}
+  m_Script: {fileID: 11500000, guid: d2a1d398dcd86ce449b1577fd90a181e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BoardSlot
 --- !u!1 &1033757185
@@ -980,80 +950,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1033757185}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e6375d188ee7054988d626f2d40354a, type: 3}
+  m_Script: {fileID: 11500000, guid: d2a1d398dcd86ce449b1577fd90a181e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BoardSlot
---- !u!1 &1033897100
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1033897101}
-  - component: {fileID: 1033897102}
-  m_Layer: 0
-  m_Name: PlacementPointManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1033897101
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1033897100}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1718294225}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1033897102
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1033897100}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 570b427f089d3b7439bd035a21792dc8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlacementPointManager
-  boardArea: {fileID: 1489155601}
-  slots:
-  - {fileID: 1805562118}
-  - {fileID: 1033757187}
-  - {fileID: 1259482466}
-  - {fileID: 417504824}
-  - {fileID: 1015730709}
-  - {fileID: 501223884}
-  - {fileID: 146116389}
-  - {fileID: 501061027}
-  - {fileID: 1971632121}
-  - {fileID: 2134728610}
-  - {fileID: 1041945965}
-  - {fileID: 227603558}
-  - {fileID: 476142246}
-  - {fileID: 1576092795}
-  - {fileID: 913357094}
-  - {fileID: 1118862377}
-  - {fileID: 2078413076}
-  - {fileID: 2087138249}
-  - {fileID: 1571654670}
-  - {fileID: 287644114}
-  - {fileID: 324421555}
-  - {fileID: 1678269}
-  - {fileID: 978061650}
-  - {fileID: 26946946}
-  - {fileID: 1964824603}
 --- !u!1 &1041945963
 GameObject:
   m_ObjectHideFlags: 0
@@ -1095,7 +994,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1041945963}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e6375d188ee7054988d626f2d40354a, type: 3}
+  m_Script: {fileID: 11500000, guid: d2a1d398dcd86ce449b1577fd90a181e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BoardSlot
 --- !u!1 &1075477285
@@ -1108,7 +1007,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1075477286}
   m_Layer: 0
-  m_Name: LeftSpawnPoint
+  m_Name: BrickPreparedPoint1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1123,7 +1022,7 @@ Transform:
   m_GameObject: {fileID: 1075477285}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.5, y: -4, z: 0}
+  m_LocalPosition: {x: -1.5, y: -3.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1170,61 +1069,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1118862375}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e6375d188ee7054988d626f2d40354a, type: 3}
+  m_Script: {fileID: 11500000, guid: d2a1d398dcd86ce449b1577fd90a181e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BoardSlot
---- !u!1 &1245435436
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1245435439}
-  - component: {fileID: 1245435437}
-  m_Layer: 0
-  m_Name: BlockSpawner
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1245435437
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1245435436}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 99b8618a449e3204083f922f482abfbc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BlockSpawner
-  blockPrefabs:
-  - {fileID: 9097663397063738304, guid: bda66e85279971a48b7559764ea8cdd2, type: 3}
-  - {fileID: 9097663397063738304, guid: 7c9becc6691d0394a952a8229de28754, type: 3}
-  spawnPoints:
-  - {fileID: 1075477286}
-  - {fileID: 1607900279}
-  - {fileID: 1499976473}
-  connectionChecker: {fileID: 2112759565}
---- !u!4 &1245435439
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1245435436}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.18403, y: -1.17436, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1259482464
 GameObject:
   m_ObjectHideFlags: 0
@@ -1266,7 +1113,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1259482464}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e6375d188ee7054988d626f2d40354a, type: 3}
+  m_Script: {fileID: 11500000, guid: d2a1d398dcd86ce449b1577fd90a181e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BoardSlot
 --- !u!1 &1274650486
@@ -1448,7 +1295,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1417961405}
   m_Layer: 0
-  m_Name: BlockSpawnPoints
+  m_Name: BrickPreparedPoints
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1470,7 +1317,38 @@ Transform:
   - {fileID: 1075477286}
   - {fileID: 1607900279}
   - {fileID: 1499976473}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1489155600}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1481587286
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1481587287}
+  m_Layer: 0
+  m_Name: BrickSpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1481587287
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1481587286}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 6, y: -3.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1489155600}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1489155598
 GameObject:
@@ -1483,6 +1361,9 @@ GameObject:
   - component: {fileID: 1489155600}
   - component: {fileID: 1489155599}
   - component: {fileID: 1489155601}
+  - component: {fileID: 1489155602}
+  - component: {fileID: 1489155603}
+  - component: {fileID: 1489155605}
   m_Layer: 0
   m_Name: Board
   m_TagString: Untagged
@@ -1535,8 +1416,8 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1263140649
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: 756214eb951a23c4aa42fe10e326e56c, type: 3}
@@ -1558,11 +1439,13 @@ Transform:
   m_GameObject: {fileID: 1489155598}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 297425868}
+  - {fileID: 1481587287}
+  - {fileID: 1417961405}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &1489155601
@@ -1611,6 +1494,80 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 5, y: 5}
   m_EdgeRadius: 0
+--- !u!114 &1489155602
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1489155598}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dcb193bcb77a85447ab01094ed5440ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BoradManager
+  _dragScreenYOffset: 100
+--- !u!114 &1489155603
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1489155598}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ad091844cc1ade4ea1f4132c8036f55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BrickSpawner
+  _brickPrefabs:
+  - {fileID: 9097663397063738304, guid: 8203a2c7bde70c34aad2a17d113cc991, type: 3}
+  - {fileID: 9097663397063738304, guid: 437adce35fcaa5b488cb63261eeaa1b3, type: 3}
+  _brickSpawnPoint: {fileID: 1481587287}
+  _brickPreparedPoints:
+  - {fileID: 1075477286}
+  - {fileID: 1607900279}
+  - {fileID: 1499976473}
+--- !u!114 &1489155605
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1489155598}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f526488611dc8d4c844449117eaddaf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Board
+  _rowCount: 5
+  _columnCount: 5
+  _slotReferences:
+  - {fileID: 1805562118}
+  - {fileID: 1033757187}
+  - {fileID: 1259482466}
+  - {fileID: 417504824}
+  - {fileID: 1015730709}
+  - {fileID: 501223884}
+  - {fileID: 146116389}
+  - {fileID: 501061027}
+  - {fileID: 1971632121}
+  - {fileID: 2134728610}
+  - {fileID: 1041945965}
+  - {fileID: 227603558}
+  - {fileID: 476142246}
+  - {fileID: 1576092795}
+  - {fileID: 913357094}
+  - {fileID: 1118862377}
+  - {fileID: 2078413076}
+  - {fileID: 2087138249}
+  - {fileID: 1571654670}
+  - {fileID: 287644114}
+  - {fileID: 324421555}
+  - {fileID: 1678269}
+  - {fileID: 978061650}
+  - {fileID: 26946946}
+  - {fileID: 1964824603}
+  _destroyInterval: 0.05
 --- !u!1 &1499976472
 GameObject:
   m_ObjectHideFlags: 0
@@ -1621,7 +1578,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1499976473}
   m_Layer: 0
-  m_Name: RightSpawnPoint
+  m_Name: BrickPreparedPoint3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1636,7 +1593,7 @@ Transform:
   m_GameObject: {fileID: 1499976472}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.5, y: -4, z: 0}
+  m_LocalPosition: {x: 1.5, y: -3.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1683,7 +1640,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1571654668}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e6375d188ee7054988d626f2d40354a, type: 3}
+  m_Script: {fileID: 11500000, guid: d2a1d398dcd86ce449b1577fd90a181e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BoardSlot
 --- !u!1 &1576092793
@@ -1727,7 +1684,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1576092793}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e6375d188ee7054988d626f2d40354a, type: 3}
+  m_Script: {fileID: 11500000, guid: d2a1d398dcd86ce449b1577fd90a181e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BoardSlot
 --- !u!1 &1607900278
@@ -1740,7 +1697,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1607900279}
   m_Layer: 0
-  m_Name: CenterSpawnPoint
+  m_Name: BrickPreparedPoint2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1755,7 +1712,7 @@ Transform:
   m_GameObject: {fileID: 1607900278}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -4, z: 0}
+  m_LocalPosition: {x: 0, y: -3.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1771,7 +1728,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1718294225}
   m_Layer: 0
-  m_Name: Manager
+  m_Name: Managers
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1790,7 +1747,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1033897101}
+  - {fileID: 192394840}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1763675229
@@ -1949,7 +1906,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1805562116}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e6375d188ee7054988d626f2d40354a, type: 3}
+  m_Script: {fileID: 11500000, guid: d2a1d398dcd86ce449b1577fd90a181e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BoardSlot
 --- !u!1 &1884909480
@@ -2012,7 +1969,7 @@ Camera:
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
-  orthographic: 1
+  orthographic: 0
   orthographic size: 5
   m_Depth: -1
   m_CullingMask:
@@ -2038,7 +1995,7 @@ Transform:
   m_GameObject: {fileID: 1884909480}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: 0, y: 0, z: -8.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2121,7 +2078,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1964824601}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e6375d188ee7054988d626f2d40354a, type: 3}
+  m_Script: {fileID: 11500000, guid: d2a1d398dcd86ce449b1577fd90a181e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BoardSlot
 --- !u!1 &1971632119
@@ -2165,9 +2122,100 @@ MonoBehaviour:
   m_GameObject: {fileID: 1971632119}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e6375d188ee7054988d626f2d40354a, type: 3}
+  m_Script: {fileID: 11500000, guid: d2a1d398dcd86ce449b1577fd90a181e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BoardSlot
+--- !u!1 &2063976815
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2063976817}
+  - component: {fileID: 2063976816}
+  m_Layer: 0
+  m_Name: BackGround
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!212 &2063976816
+SpriteRenderer:
+  serializedVersion: 2
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2063976815}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: 1313904585
+  m_SortingLayer: 1
+  m_SortingOrder: 0
+  m_MaskInteraction: 0
+  m_Sprite: {fileID: 21300000, guid: a2a2742eb342e1c4080f634708365c2a, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 7.5, y: 13.32}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_SpriteSortPoint: 0
+--- !u!4 &2063976817
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2063976815}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.9, y: 0.76, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2078413074
 GameObject:
   m_ObjectHideFlags: 0
@@ -2209,7 +2257,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2078413074}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e6375d188ee7054988d626f2d40354a, type: 3}
+  m_Script: {fileID: 11500000, guid: d2a1d398dcd86ce449b1577fd90a181e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BoardSlot
 --- !u!1 &2087138247
@@ -2253,82 +2301,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 2087138247}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e6375d188ee7054988d626f2d40354a, type: 3}
+  m_Script: {fileID: 11500000, guid: d2a1d398dcd86ce449b1577fd90a181e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BoardSlot
---- !u!1 &2112759564
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2112759566}
-  - component: {fileID: 2112759565}
-  m_Layer: 0
-  m_Name: LineConnectionChecker
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &2112759565
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2112759564}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2321bb26c93f97141a3b5369c3db730c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::LineConnectionChecker
-  rowCount: 5
-  columnCount: 5
-  slots:
-  - {fileID: 1805562118}
-  - {fileID: 1033757187}
-  - {fileID: 1259482466}
-  - {fileID: 417504824}
-  - {fileID: 1015730709}
-  - {fileID: 501223884}
-  - {fileID: 146116389}
-  - {fileID: 501061027}
-  - {fileID: 1971632121}
-  - {fileID: 2134728610}
-  - {fileID: 1041945965}
-  - {fileID: 227603558}
-  - {fileID: 476142246}
-  - {fileID: 1576092795}
-  - {fileID: 913357094}
-  - {fileID: 1118862377}
-  - {fileID: 2078413076}
-  - {fileID: 2087138249}
-  - {fileID: 1571654670}
-  - {fileID: 287644114}
-  - {fileID: 324421555}
-  - {fileID: 1678269}
-  - {fileID: 978061650}
-  - {fileID: 26946946}
-  - {fileID: 1964824603}
-  blockDestroyer: {fileID: 208562854}
---- !u!4 &2112759566
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2112759564}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.14274, y: 0.51569, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2134728608
 GameObject:
   m_ObjectHideFlags: 0
@@ -2370,7 +2345,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2134728608}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e6375d188ee7054988d626f2d40354a, type: 3}
+  m_Script: {fileID: 11500000, guid: d2a1d398dcd86ce449b1577fd90a181e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BoardSlot
 --- !u!1660057539 &9223372036854775807
@@ -2381,10 +2356,6 @@ SceneRoots:
   - {fileID: 1412125832}
   - {fileID: 868432213}
   - {fileID: 1789956751}
+  - {fileID: 2063976817}
   - {fileID: 1489155600}
-  - {fileID: 865904936}
-  - {fileID: 1417961405}
-  - {fileID: 1245435439}
   - {fileID: 1718294225}
-  - {fileID: 2112759566}
-  - {fileID: 208562855}
