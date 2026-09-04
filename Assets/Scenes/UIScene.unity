@@ -597,9 +597,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01a17302d87d8fd4797e39053e84fc0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LogoAlphabet
-  _startOffset: 1350
+  _startOffset: 1500
   _animationDuration: 1.2
-  _rotation: 680
+  _rotation: 0
 --- !u!1 &395507118
 GameObject:
   m_ObjectHideFlags: 0
@@ -905,7 +905,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 434, y: 804}
+  m_AnchoredPosition: {x: 428, y: 734}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &566516982
@@ -1191,9 +1191,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01a17302d87d8fd4797e39053e84fc0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LogoAlphabet
-  _startOffset: 1200
-  _animationDuration: 1.7
-  _rotation: 720
+  _startOffset: 1500
+  _animationDuration: 0.8
+  _rotation: 0
 --- !u!1 &668568197
 GameObject:
   m_ObjectHideFlags: 0
@@ -1472,6 +1472,7 @@ MonoBehaviour:
   _soundToggle: {fileID: 566516982}
   _soundImage: {fileID: 21300000, guid: 6ba76a20b942d1646a2371b42d8b2719, type: 3}
   _muteImage: {fileID: 21300000, guid: 3f90549d34185d244b3e5719f6432ce6, type: 3}
+  _logoAnimationDelay: 0.2
 --- !u!1 &831348363
 GameObject:
   m_ObjectHideFlags: 0
@@ -1636,9 +1637,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01a17302d87d8fd4797e39053e84fc0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LogoAlphabet
-  _startOffset: 1450
-  _animationDuration: 1.1
-  _rotation: 315
+  _startOffset: 1500
+  _animationDuration: 0.6
+  _rotation: 0
 --- !u!1 &1030510537
 GameObject:
   m_ObjectHideFlags: 0
@@ -1727,9 +1728,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01a17302d87d8fd4797e39053e84fc0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LogoAlphabet
-  _startOffset: 1100
-  _animationDuration: 1.6
-  _rotation: 1000
+  _startOffset: 1500
+  _animationDuration: 0.4
+  _rotation: 0
 --- !u!1 &1345095414
 GameObject:
   m_ObjectHideFlags: 0
@@ -1818,9 +1819,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01a17302d87d8fd4797e39053e84fc0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LogoAlphabet
-  _startOffset: 1550
-  _animationDuration: 1.5
-  _rotation: 230
+  _startOffset: 1500
+  _animationDuration: 1
+  _rotation: 0
 --- !u!1 &1662318449
 GameObject:
   m_ObjectHideFlags: 0
@@ -2037,7 +2038,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 200, y: 200}
+  m_SizeDelta: {x: 200, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1793823561
 MonoBehaviour:
@@ -2165,9 +2166,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01a17302d87d8fd4797e39053e84fc0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LogoAlphabet
-  _startOffset: 1650
-  _animationDuration: 1.7
-  _rotation: 540
+  _startOffset: 1500
+  _animationDuration: 1.4
+  _rotation: 0
 --- !u!1 &1850675595
 GameObject:
   m_ObjectHideFlags: 0

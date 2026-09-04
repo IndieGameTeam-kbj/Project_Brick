@@ -13,7 +13,7 @@ public class MainMenuController : MonoBehaviour
     [SerializeField] private Sprite _soundImage;
     [SerializeField] private Sprite _muteImage;
 
-    private float _logoAnimationDelay = 0.5f;
+    [SerializeField] private float _logoAnimationDelay = 0.5f;
     private bool _isMute = false;
     private float _time = 0.0f;
 
@@ -45,6 +45,7 @@ public class MainMenuController : MonoBehaviour
     public void OnClickNewGameButton()
     {
         Debug.Log($"New Game");
+        StartCoroutine(PlayLogoAnimation());
     }
 
     public void OnClickContinueButton()

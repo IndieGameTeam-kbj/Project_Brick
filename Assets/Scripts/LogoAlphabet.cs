@@ -11,15 +11,15 @@ public class LogoAlphabet : MonoBehaviour
     private Vector2 _originPosition;
     private Quaternion _originRotation;
 
-    private void Awake()
-    {
-        _rectTransform = GetComponent<RectTransform>();
-        _originPosition = _rectTransform.anchoredPosition;
-        _originRotation = _rectTransform.localRotation;
-    }
-
     public void Init()
     {
+        if (_rectTransform == null)
+        {
+            _rectTransform = GetComponent<RectTransform>();
+            _originPosition = _rectTransform.anchoredPosition;
+            _originRotation = _rectTransform.localRotation;
+        }
+
         _rectTransform.anchoredPosition = _originPosition + Vector2.right * _startOffset;
         _rectTransform.localRotation = _originRotation;
     }
