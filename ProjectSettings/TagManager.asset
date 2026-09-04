@@ -41,24 +41,5 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: BackGround
-<<<<<<< Updated upstream
-    uniqueID: 659895575
-    locked: 0
-  - name: Block
-    uniqueID: 3234202015
-    locked: 0
-  - name: UI
-    uniqueID: 3309619999
-=======
-    uniqueID: 1313904585
-    locked: 0
-  - name: Board
-    uniqueID: 1263140649
-    locked: 0
-  - name: Brick
-    uniqueID: 2190388583
->>>>>>> Stashed changes
-    locked: 0
   m_RenderingLayers:
   - Default

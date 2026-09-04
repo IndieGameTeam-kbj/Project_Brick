@@ -21,7 +21,6 @@ public class BlockRolling : MonoBehaviour
         // Rigidbody2D의 초당 속도를 가져옴
         Vector2 velocity = rb.linearVelocity;
 
-        // 속도가 최소 속도보다 작으면 회전을 멈춤
         float rotationDirection;
 
         // 좌우 이동 중이면 좌우 방향을 기준으로 회전
