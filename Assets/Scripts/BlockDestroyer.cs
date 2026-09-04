@@ -3,8 +3,7 @@ using UnityEngine;
 
 public class BlockDestroyer : MonoBehaviour
 {
-    public void DestroyBlocks(
-        HashSet<BoardSlot> slotsToDestroy)
+    public void DestroyBlocks(HashSet<BoardSlot> slotsToDestroy)
     {
         foreach (BoardSlot slot in slotsToDestroy)
         {
