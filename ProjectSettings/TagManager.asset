@@ -41,5 +41,14 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: BackGround
+    uniqueID: 2297991217
+    locked: 0
+  - name: Board
+    uniqueID: 3484168827
+    locked: 0
+  - name: Brick
+    uniqueID: 1069402509
+    locked: 0
   m_RenderingLayers:
   - Default
