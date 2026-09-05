@@ -688,7 +688,7 @@ GameObject:
   - component: {fileID: 538606166}
   - component: {fileID: 538606165}
   m_Layer: 5
-  m_Name: ScoreText
+  m_Name: Score
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1470,7 +1470,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e239d4179a595e4da931dc3d13bb760, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ScoreManager
+  _board: {fileID: 1489155605}
   _scoreText: {fileID: 788895450}
+  _punchScale: 1.1
+  _punchDuration: 1.1
+  _punchRotation: 15
 --- !u!1 &1397877682
 GameObject:
   m_ObjectHideFlags: 0

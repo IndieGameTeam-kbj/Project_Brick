@@ -14,7 +14,7 @@ public class Board : MonoBehaviour
     private List<List<BoardSlot>> _destructionOrder = new List<List<BoardSlot>>();
     private float _destroyInterval = 0.2f;
 
-    public event Action BrickDestroyed;
+    public event Action<int> LineDestroyed;
 
     private void Awake()
     {
@@ -280,6 +280,8 @@ public class Board : MonoBehaviour
 
     private IEnumerator DestroyLine(List<List<BoardSlot>> destructionOrder)
     {
+        int destroyedBrickCount = 0;
+
         foreach (List<BoardSlot> level in destructionOrder)
         {
             foreach (BoardSlot slot in level)
@@ -289,19 +291,15 @@ public class Board : MonoBehaviour
                 if (brick == null) continue;
 
                 brick.Destroyed += slot.Clear;
-                brick.Destroyed += OnBrickDestroyed;
                 brick.Destroy();
+                destroyedBrickCount++;
             }
 
             yield return new WaitForSeconds(_destroyInterval);
         }
 
+        LineDestroyed?.Invoke(destroyedBrickCount);
         _destructionOrder.Clear();
-    }
-
-    private void OnBrickDestroyed()
-    {
-        BrickDestroyed?.Invoke();
     }
 
 }
