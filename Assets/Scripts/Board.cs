@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,6 +13,8 @@ public class Board : MonoBehaviour
     private BoardSlot[,] _slots;
     private List<List<BoardSlot>> _destructionOrder = new List<List<BoardSlot>>();
     private float _destroyInterval = 0.2f;
+
+    public event Action BrickDestroyed;
 
     private void Awake()
     {
@@ -254,26 +257,6 @@ public class Board : MonoBehaviour
         return false;
     }
 
-    private IEnumerator DestroyLine(List<List<BoardSlot>> destructionOrder)
-    {
-        foreach (List<BoardSlot> level in destructionOrder)
-        {
-            foreach (BoardSlot slot in level)
-            {
-                BrickController brick = slot.PlacedBrick;
-
-                if (brick == null) continue;
-
-                brick.Destroyed += slot.Clear;
-                brick.Destroy();
-            }
-
-            yield return new WaitForSeconds(_destroyInterval);
-        }
-
-        _destructionOrder.Clear();
-    }
-
     private (int rowOffset, int columnOffset) GetOffset(BrickType type)
     {
         switch (type)
@@ -293,6 +276,32 @@ public class Board : MonoBehaviour
             default:
                 return (0, 0);
         }
+    }
+
+    private IEnumerator DestroyLine(List<List<BoardSlot>> destructionOrder)
+    {
+        foreach (List<BoardSlot> level in destructionOrder)
+        {
+            foreach (BoardSlot slot in level)
+            {
+                BrickController brick = slot.PlacedBrick;
+
+                if (brick == null) continue;
+
+                brick.Destroyed += slot.Clear;
+                brick.Destroyed += OnBrickDestroyed;
+                brick.Destroy();
+            }
+
+            yield return new WaitForSeconds(_destroyInterval);
+        }
+
+        _destructionOrder.Clear();
+    }
+
+    private void OnBrickDestroyed()
+    {
+        BrickDestroyed?.Invoke();
     }
 
 }
