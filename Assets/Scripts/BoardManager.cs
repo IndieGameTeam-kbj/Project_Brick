@@ -2,16 +2,25 @@ using UnityEngine;
 
 public class BoardManager : MonoBehaviour
 {
-    private BrickSpawner _brickSpawner;
-    private Board _board;
+    [SerializeField] private BrickSpawner _brickSpawner;
+    [SerializeField] private Board _board;
+
     private BrickController[] _preparedBricks;
+    private Camera _mainCamera;
     private BrickController _draggingBrick;
     private float _dragScreenYOffset = 100.0f;
 
+    public static BoardManager Instance { get; private set; }
     private void Awake()
     {
-        _brickSpawner = GetComponent<BrickSpawner>();
-        _board = GetComponent<Board>();
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        Instance = this;
+
+        _mainCamera = Camera.main;
     }
 
     private void Start()
@@ -43,7 +52,7 @@ public class BoardManager : MonoBehaviour
     {
         if (_draggingBrick != null) return;
 
-        Vector2 pointerWorldPosition = InputManager.Instance.GetPointerWorldPosition(0.0f);
+        Vector2 pointerWorldPosition = ScreenToWorldPosition(InputManager.Instance.PointerScreenPosition, 0.0f);
 
         Collider2D collider = Physics2D.OverlapPoint(pointerWorldPosition);
         if (collider == null) return;
@@ -60,7 +69,21 @@ public class BoardManager : MonoBehaviour
     {
         Vector2 screenPosition = InputManager.Instance.PointerScreenPosition;
         screenPosition.y += _dragScreenYOffset;
-        return InputManager.Instance.ScreenToWorldPosition(screenPosition, _draggingBrick.DragZ);
+        return ScreenToWorldPosition(screenPosition, _draggingBrick.DragZ);
+    }
+
+    private Vector2 ScreenToWorldPosition(Vector2 screenPosition, float worldZ)
+    {
+        Ray ray = _mainCamera.ScreenPointToRay(screenPosition);
+        Plane plane = new Plane(Vector3.forward, new Vector3(0.0f, 0.0f, worldZ));
+
+        if (!plane.Raycast(ray, out float distance))
+        {
+            return Vector2.zero;
+        }
+
+        Vector3 worldPosition = ray.GetPoint(distance);
+        return new Vector2(worldPosition.x, worldPosition.y);
     }
 
     private void TryPlaceBrick()
