@@ -267,10 +267,10 @@ public class Board : MonoBehaviour
             case BrickType.Vertical:
                 return (1, 0);
 
-            case BrickType.DiagonalUpRight:
+            case BrickType.DiagonalUpward:
                 return (-1, 1);
 
-            case BrickType.DiagonalDownRight:
+            case BrickType.DiagonalDownward:
                 return (1, 1);
 
             default:

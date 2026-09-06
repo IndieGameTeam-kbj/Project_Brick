@@ -1472,9 +1472,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ScoreManager
   _board: {fileID: 1489155605}
   _scoreText: {fileID: 788895450}
-  _punchScale: 1.1
-  _punchDuration: 1.1
-  _punchRotation: 15
 --- !u!1 &1397877682
 GameObject:
   m_ObjectHideFlags: 0
@@ -1864,7 +1861,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 5, y: 5}
+    oldSize: {x: 5.016, y: 5.016}
     newSize: {x: 12.54, y: 12.54}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -1887,6 +1884,8 @@ MonoBehaviour:
   _brickPrefabs:
   - {fileID: 9097663397063738304, guid: 8203a2c7bde70c34aad2a17d113cc991, type: 3}
   - {fileID: 9097663397063738304, guid: 437adce35fcaa5b488cb63261eeaa1b3, type: 3}
+  - {fileID: 9097663397063738304, guid: 4c280c3add0dd954c8213312dcc7c85f, type: 3}
+  - {fileID: 9097663397063738304, guid: de31a8aee93c58b429721ea1c5279736, type: 3}
   _brickSpawnPoint: {fileID: 1481587287}
   _brickPreparedPoints:
   - {fileID: 1075477286}
@@ -2153,7 +2152,7 @@ Transform:
   m_GameObject: {fileID: 1718294224}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.9226, y: -1.69718, z: 0.01373}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

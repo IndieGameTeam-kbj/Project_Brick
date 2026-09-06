@@ -14,8 +14,8 @@ public enum BrickType
 {
     Horizontal,
     Vertical,
-    DiagonalUpRight,
-    DiagonalDownRight,
+    DiagonalUpward,
+    DiagonalDownward,
 }
 
 public class BrickController : MonoBehaviour
