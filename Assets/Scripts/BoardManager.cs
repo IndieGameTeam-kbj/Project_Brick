@@ -119,10 +119,7 @@ public class BoardManager : MonoBehaviour
     {
         foreach (BrickController brick in _preparedBricks)
         {
-            if (brick != null)
-            {
-                return false;
-            }
+            if (brick != null) return false;
         }
 
         return true;

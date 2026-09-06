@@ -4,17 +4,15 @@ using UnityEngine.InputSystem;
 public class InputManager : MonoBehaviour
 {
     private InputActions _inputActions;
-
     private InputAction _pointAction;
     private InputAction _clickAction;
-
-    public static InputManager Instance { get; private set; }
 
     public Vector2 PointerScreenPosition => _pointAction.ReadValue<Vector2>();
     public bool IsPointerPressed => _clickAction.WasPressedThisFrame();
     public bool IsPointerHeld => _clickAction.IsPressed();
     public bool IsPointerReleased => _clickAction.WasReleasedThisFrame();
 
+    public static InputManager Instance { get; private set; }
     private void Awake()
     {
         if (Instance != null && Instance != this)

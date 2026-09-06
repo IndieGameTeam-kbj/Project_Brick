@@ -248,10 +248,7 @@ public class Board : MonoBehaviour
     {
         foreach (BrickType brickType in brick.Types)
         {
-            if (brickType == type)
-            {
-                return true;
-            }
+            if (brickType == type) return true;
         }
 
         return false;
