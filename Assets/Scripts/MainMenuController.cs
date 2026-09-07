@@ -43,6 +43,7 @@ public class MainMenuController : MonoBehaviour
 
     private void InitSound()
     {
+        _isMute = SaveManager.Instance.LoadMute();
 
         _soundToggle.SetIsOnWithoutNotify(!_isMute);
 
