@@ -45,6 +45,7 @@ public class MainMenuController : MonoBehaviour
     public void OnClickNewGameButton()
     {
         Debug.Log($"New Game");
+        SoundManager.Instance.PlayButtonClick();
         StartCoroutine(PlayLogoAnimation());
     }
 
@@ -66,6 +67,8 @@ public class MainMenuController : MonoBehaviour
         {
             image.sprite = _soundImage;
         }
+
+        SoundManager.Instance.PlayButtonClick(); SoundManager.Instance.PlayButtonClick();
     }
 
 }
