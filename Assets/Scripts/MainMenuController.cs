@@ -1,3 +1,4 @@
+using DG.Tweening.Core.Easing;
 using System.Collections;
 using TMPro;
 using UnityEngine;
@@ -14,22 +15,38 @@ public class MainMenuController : MonoBehaviour
     [SerializeField] private Sprite _muteImage;
 
     [SerializeField] private float _logoAnimationDelay = 0.05f;
-    private bool _isMute = false;
+    private bool _isMute;
 
-    private void Awake()
+    private void Start()
     {
         Init();
     }
 
-    public void Init()
+    private void Init()
     {
-        _continueButton.SetActive(false);
+        InitSound();
+        InitContinueButton();
+
         StartCoroutine(PlayLogoAnimation());
     }
 
     public void Refresh()
     {
         _bestScoreText.text = ScoreManager.Instance.BestScore.ToString();
+    }
+    private void InitContinueButton()
+    {
+        bool hasSaveData = SaveManager.Instance.HasSaveData();
+
+        _continueButton.SetActive(hasSaveData);
+    }
+
+    private void InitSound()
+    {
+
+        _soundToggle.SetIsOnWithoutNotify(!_isMute);
+
+        ApplySoundSetting();
     }
 
     private IEnumerator PlayLogoAnimation()
@@ -48,30 +65,35 @@ public class MainMenuController : MonoBehaviour
 
     public void OnClickNewGameButton()
     {
-        GameManager.Instance.StartNewGame();
-        //SoundManager.Instance.PlayButtonClick();
+        //GameManager.Instance.StartNewGame();
+        SoundManager.Instance.PlayButtonClick();
     }
 
     public void OnClickContinueButton()
     {
         Debug.Log($"Continue");
+        SoundManager.Instance.PlayButtonClick();
     }
 
-    public void OnClickSoundToggle()
+    public void OnSoundToggleChanged(bool isSoundOn)
     {
-        _isMute = !_isMute;
+        _isMute = !isSoundOn;
+
+        ApplySoundSetting();
+        SaveManager.Instance.SaveMute(_isMute);
+
+        if (!_isMute)
+        {
+            SoundManager.Instance.PlayButtonClick();
+        }
+    }
+
+    private void ApplySoundSetting()
+    {
+        SoundManager.Instance.SetMute(_isMute);
+
         Image image = _soundToggle.GetComponent<Image>();
-
-        if (_isMute)
-        {
-            image.sprite = _muteImage;
-        }
-        else
-        {
-            image.sprite = _soundImage;
-        }
-
-        //SoundManager.Instance.PlayButtonClick(); SoundManager.Instance.PlayButtonClick();
+        image.sprite = _isMute ? _muteImage : _soundImage;
     }
 
 }
