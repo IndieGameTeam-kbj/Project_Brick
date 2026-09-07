@@ -8,9 +8,17 @@ public class ScoreManager : MonoBehaviour
     [SerializeField] private TMP_Text _scoreText;
 
     private int _score = 0;
+    private int _bestScore = 0;
+    private int _prevBestScore = 0;
+    private bool _isNewBestScore = false;
     private float _punchScale = 1.2f;
     private float _punchDuration = 0.2f;
     private float _countDuration = 0.1f;
+
+    public int Score => _score;
+    public int BestScore => _bestScore;
+    public int PrevBestScore => _prevBestScore;
+    public bool IsNewBestScore => _isNewBestScore;
 
     public static ScoreManager Instance { get; private set; }
     private void Awake()
@@ -21,6 +29,13 @@ public class ScoreManager : MonoBehaviour
             return;
         }
         Instance = this;
+    }
+
+    public void Reset()
+    {
+        _score = 0;
+        _scoreText.text = _score.ToString();
+        _isNewBestScore = false;
     }
 
     private void AddScore(int amount)
@@ -49,6 +64,14 @@ public class ScoreManager : MonoBehaviour
         sequence.Append(target.DOScale(Vector3.one * _punchScale, _punchDuration * 0.5f).SetEase(Ease.OutQuad));
         sequence.Append(target.DOScale(Vector3.one * 0.95f, _punchDuration * 0.2f).SetEase(Ease.InOutQuad));
         sequence.Append(target.DOScale(Vector3.one, _punchDuration * 0.3f).SetEase(Ease.OutQuad));
+    }
+
+    public void UpdateBestScore()
+    {
+        _prevBestScore = _bestScore;
+        _isNewBestScore = _score > _bestScore;
+
+        if (_isNewBestScore) _bestScore = _score;
     }
 
     private void OnEnable()

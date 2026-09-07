@@ -1882,8 +1882,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BrickSpawner
   _brickPrefabs:
-  - {fileID: 9097663397063738304, guid: 8203a2c7bde70c34aad2a17d113cc991, type: 3}
-  - {fileID: 9097663397063738304, guid: 437adce35fcaa5b488cb63261eeaa1b3, type: 3}
+  - {fileID: 9097663397063738304, guid: bda66e85279971a48b7559764ea8cdd2, type: 3}
+  - {fileID: 9097663397063738304, guid: 7c9becc6691d0394a952a8229de28754, type: 3}
   - {fileID: 9097663397063738304, guid: 4c280c3add0dd954c8213312dcc7c85f, type: 3}
   - {fileID: 9097663397063738304, guid: de31a8aee93c58b429721ea1c5279736, type: 3}
   _brickSpawnPoint: {fileID: 1481587287}

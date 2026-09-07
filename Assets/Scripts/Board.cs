@@ -33,13 +33,33 @@ public class Board : MonoBehaviour
         }
     }
 
+    public void Reset()
+    {
+        StopAllCoroutines();
+        _destructionOrder.Clear();
+
+        foreach (BoardSlot slot in _slots)
+        {
+            if (!slot.IsPlaced) continue;
+
+            Destroy(slot.PlacedBrick.gameObject);
+            slot.Clear();
+        }
+    }
+
     public bool TryPlaceBrick(BrickController brick, Vector2 position)
     {
         if (!TryGetPlacementSlot(position, out BoardSlot slot)) return false;
 
         slot.Place(brick);
         brick.Place(slot.transform.position);
-        CheckLine(slot);
+        bool lineDestroyed = CheckLine(slot);
+        
+        if (!lineDestroyed && IsFull())
+        {
+            GameManager.Instance.GameOver();
+        }
+
         return true;
     }
 
@@ -64,17 +84,17 @@ public class Board : MonoBehaviour
         return slot != null && !slot.IsPlaced;
     }
 
-    private void CheckLine(BoardSlot startSlot)
+    private bool CheckLine(BoardSlot startSlot)
     {
         BrickController startBrick = startSlot.PlacedBrick;
 
-        if (startBrick == null) return;
+        if (startBrick == null) return false;
 
         _destructionOrder.Clear();
 
         foreach (BrickType type in startBrick.Types)
         {
-            List<List<BoardSlot>> destructionOrder = new List<List<BoardSlot>>
+            List<List<BoardSlot>> lineDestructionOrder = new List<List<BoardSlot>>
             {
                 new List<BoardSlot> { startSlot }
             };
@@ -152,7 +172,7 @@ public class Board : MonoBehaviour
 
                 if (currentLevel.Count > 0)
                 {
-                    destructionOrder.Add(currentLevel);
+                    lineDestructionOrder.Add(currentLevel);
                 }
 
                 if (plusWall && minusWall)
@@ -171,14 +191,14 @@ public class Board : MonoBehaviour
                 continue;
             }
 
-            for (int level = 0; level < destructionOrder.Count; level++)
+            for (int level = 0; level < lineDestructionOrder.Count; level++)
             {
                 if (_destructionOrder.Count <= level)
                 {
                     _destructionOrder.Add(new List<BoardSlot>());
                 }
 
-                foreach (BoardSlot slot in destructionOrder[level])
+                foreach (BoardSlot slot in lineDestructionOrder[level])
                 {
                     if (!_destructionOrder[level].Contains(slot))
                     {
@@ -188,12 +208,13 @@ public class Board : MonoBehaviour
             }
         }
 
-        if (_destructionOrder.Count > 0)
-        {
-            List<List<BoardSlot>> destructionOrder = _destructionOrder;
-            _destructionOrder = new List<List<BoardSlot>>();
-            StartCoroutine(DestroyLine(destructionOrder));
-        }
+        if (_destructionOrder.Count == 0) return false;
+        
+        List<List<BoardSlot>> destructionOrder = _destructionOrder;
+        _destructionOrder = new List<List<BoardSlot>>();
+        StartCoroutine(DestroyLine(destructionOrder));
+        
+        return true;
     }
 
     private bool TryGetLineSlot(int row, int column, int rowOffset, int columnOffset, int count, BrickType type, out BoardSlot slot)
@@ -297,6 +318,16 @@ public class Board : MonoBehaviour
 
         LineDestroyed?.Invoke(destroyedBrickCount);
         _destructionOrder.Clear();
+    }
+
+    private bool IsFull()
+    {
+        foreach (BoardSlot slot in _slots)
+        {
+            if (!slot.IsPlaced) return false;
+        }
+
+        return true;
     }
 
 }

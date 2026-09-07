@@ -15,7 +15,6 @@ public class MainMenuController : MonoBehaviour
 
     [SerializeField] private float _logoAnimationDelay = 0.05f;
     private bool _isMute = false;
-    private float _time = 0.0f;
 
     private void Awake()
     {
@@ -26,6 +25,11 @@ public class MainMenuController : MonoBehaviour
     {
         _continueButton.SetActive(false);
         StartCoroutine(PlayLogoAnimation());
+    }
+
+    public void Refresh()
+    {
+        _bestScoreText.text = ScoreManager.Instance.BestScore.ToString();
     }
 
     private IEnumerator PlayLogoAnimation()
@@ -44,9 +48,8 @@ public class MainMenuController : MonoBehaviour
 
     public void OnClickNewGameButton()
     {
-        Debug.Log($"New Game");
-        SoundManager.Instance.PlayButtonClick();
-        StartCoroutine(PlayLogoAnimation());
+        GameManager.Instance.StartNewGame();
+        //SoundManager.Instance.PlayButtonClick();
     }
 
     public void OnClickContinueButton()
@@ -68,7 +71,7 @@ public class MainMenuController : MonoBehaviour
             image.sprite = _soundImage;
         }
 
-        SoundManager.Instance.PlayButtonClick(); SoundManager.Instance.PlayButtonClick();
+        //SoundManager.Instance.PlayButtonClick(); SoundManager.Instance.PlayButtonClick();
     }
 
 }

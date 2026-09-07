@@ -23,7 +23,23 @@ public class BoardManager : MonoBehaviour
         _mainCamera = Camera.main;
     }
 
-    private void Start()
+    public void Reset()
+    {
+        _board.Reset();
+
+        if (_preparedBricks == null) return;
+
+        foreach (BrickController brick in _preparedBricks)
+        {
+            if (brick == null) continue;
+            Destroy(brick.gameObject);
+        }
+
+        _preparedBricks = null;
+        _draggingBrick = null;
+    }
+
+    public void StartGame()
     {
         _preparedBricks = _brickSpawner.SpawnBricks();
     }
