@@ -18,6 +18,12 @@ public class SoundManager : MonoBehaviour
     [SerializeField] private AudioClip _buttonClickSound;
     [SerializeField] private AudioClip _gameOverSound;
 
+    [Header("Best Scores")]
+    [SerializeField] private AudioClip _bestScores;
+
+    [Header("Scene Transition")]
+    [SerializeField] private AudioClip _sceneTransitionSound;
+
     [Header("Settings")]
     [SerializeField] private float _minPitch = 0.95f;
     [SerializeField] private float _maxPitch = 1.05f;
@@ -55,6 +61,8 @@ public class SoundManager : MonoBehaviour
         Play(_blockSpawnSound);
     }
 
+    
+
     public void PlayBlockDestroy(int comboCount = 0)
     {
         if (_blockDestroySounds.Length == 0)
@@ -79,6 +87,16 @@ public class SoundManager : MonoBehaviour
     public void PlayGameOver()
     {
         Play(_gameOverSound);
+    }
+
+    private void PlayBestScores()
+    {
+        Play(_bestScores);
+    }
+
+    public void PlaySceneTransition()
+    {
+        Play(_sceneTransitionSound);
     }
 
     private void PlayRandom(AudioClip[] clips)
