@@ -36,7 +36,8 @@ public class MainMenuController : MonoBehaviour
     }
     private void InitContinueButton()
     {
-        bool hasSaveData = SaveManager.Instance.HasSaveData();
+        bool hasSaveData =
+            SaveManager.Instance.HasSaveData();
 
         _continueButton.SetActive(hasSaveData);
     }
@@ -66,13 +67,13 @@ public class MainMenuController : MonoBehaviour
 
     public void OnClickNewGameButton()
     {
-        //GameManager.Instance.StartNewGame();
+        GameManager.Instance.StartNewGame();
         SoundManager.Instance.PlayButtonClick();
+        SaveManager.Instance.DeleteGameSave();
     }
 
     public void OnClickContinueButton()
     {
-        Debug.Log($"Continue");
         SoundManager.Instance.PlayButtonClick();
     }
 

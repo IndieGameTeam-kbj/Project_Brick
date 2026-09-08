@@ -1162,8 +1162,8 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 679426375}
         m_TargetAssemblyTypeName: MainMenuController, Assembly-CSharp
-        m_MethodName: OnClickSoundToggle
-        m_Mode: 1
+        m_MethodName: OnSoundToggleChanged
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -2586,6 +2586,50 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!1 &1260964552
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1260964554}
+  - component: {fileID: 1260964553}
+  m_Layer: 0
+  m_Name: SaveManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1260964553
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1260964552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6ecf42a361252c45ae3254badfbb60b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SaveManager
+--- !u!4 &1260964554
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1260964552}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -26.05363, y: -0, z: 216.78496}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1345095414
 GameObject:
   m_ObjectHideFlags: 0
@@ -3186,13 +3230,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SoundManager
   _sfxSource: {fileID: 1851028830}
-  _blockPickUpSounds: []
-  _blockPlaceSounds: []
-  _blockDestroySounds: []
-  _blockReturnSound: {fileID: 0}
-  _blockSpawnSound: {fileID: 0}
-  _buttonClickSound: {fileID: 0}
-  _gameOverSound: {fileID: 0}
+  _blockPickUpSounds:
+  - {fileID: 8300000, guid: 902ae4f091b8cec44a8717645ec3c229, type: 3}
+  _blockPlaceSounds:
+  - {fileID: 8300000, guid: 8a9f71371f1327b448b99cbb7731d126, type: 3}
+  _blockDestroySounds:
+  - {fileID: 8300000, guid: 3431d2ec99cc1824f9970f1853888107, type: 3}
+  _blockReturnSound: {fileID: 8300000, guid: 29261d81fdd8c6b458fb9066b30f4b3c, type: 3}
+  _blockSpawnSound: {fileID: 8300000, guid: 2de746f5f9f33d14081885e6f3c2fa22, type: 3}
+  _buttonClickSound: {fileID: 8300000, guid: 724f49ee5fc160b468411e4ed661610f, type: 3}
+  _gameOverSound: {fileID: 8300000, guid: a5f7c368b7d12454886f1c3c3992b967, type: 3}
+  _bestScores: {fileID: 8300000, guid: e723105415d0ef347921f15a5d60e901, type: 3}
+  _sceneTransitionSound: {fileID: 8300000, guid: 62e4cf540080a494faaaef1e5ade5672, type: 3}
   _minPitch: 0.95
   _maxPitch: 1.05
 --- !u!4 &1851028832
@@ -3461,3 +3510,4 @@ SceneRoots:
   - {fileID: 554566714}
   - {fileID: 1927074853}
   - {fileID: 1851028832}
+  - {fileID: 1260964554}
