@@ -35,14 +35,29 @@ public class ScoreManager : MonoBehaviour
     {
         _score = 0;
         _scoreText.text = _score.ToString();
+
+        _prevBestScore = _bestScore;
         _isNewBestScore = false;
     }
 
     private void AddScore(int amount)
     {
-        int prevScore = _score;
+        int previousScore = _score;
         _score += amount;
-        PlayScoreAnimation(prevScore, _score);
+
+        if (_score > _bestScore)
+        {
+            // 이번 판에서 신기록을 처음 달성한 순간에만 실행
+            if (!_isNewBestScore)
+            {
+                SoundManager.Instance.PlayBestScores();
+                _isNewBestScore = true;
+            }
+
+            _bestScore = _score;
+        }
+
+        PlayScoreAnimation(previousScore, _score);
     }
 
     private void PlayScoreAnimation(int previousScore, int targetScore)
@@ -64,14 +79,6 @@ public class ScoreManager : MonoBehaviour
         sequence.Append(target.DOScale(Vector3.one * _punchScale, _punchDuration * 0.5f).SetEase(Ease.OutQuad));
         sequence.Append(target.DOScale(Vector3.one * 0.95f, _punchDuration * 0.2f).SetEase(Ease.InOutQuad));
         sequence.Append(target.DOScale(Vector3.one, _punchDuration * 0.3f).SetEase(Ease.OutQuad));
-    }
-
-    public void UpdateBestScore()
-    {
-        _prevBestScore = _bestScore;
-        _isNewBestScore = _score > _bestScore;
-
-        if (_isNewBestScore) _bestScore = _score;
     }
 
     private void OnEnable()

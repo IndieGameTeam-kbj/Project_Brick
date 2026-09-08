@@ -12,7 +12,7 @@ public class Board : MonoBehaviour
     private Collider2D _boardArea;
     private BoardSlot[,] _slots;
     private List<List<BoardSlot>> _destructionOrder = new List<List<BoardSlot>>();
-    private float _destroyInterval = 0.2f;
+    private float _destroyInterval = 0.05f;
 
     public event Action<int> LineDestroyed;
 
@@ -299,7 +299,7 @@ public class Board : MonoBehaviour
     private IEnumerator DestroyLine(List<List<BoardSlot>> destructionOrder)
     {
         int destroyedBrickCount = 0;
-
+        SoundManager.Instance.PlayBlockDestroy();
         foreach (List<BoardSlot> level in destructionOrder)
         {
             foreach (BoardSlot slot in level)

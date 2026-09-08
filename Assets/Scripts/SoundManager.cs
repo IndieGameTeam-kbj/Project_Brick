@@ -84,7 +84,7 @@ public class SoundManager : MonoBehaviour
         Play(_gameOverSound);
     }
 
-    private void PlayBestScores()
+    public void PlayBestScores()
     {
         Play(_bestScores);
     }

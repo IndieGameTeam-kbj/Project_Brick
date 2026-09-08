@@ -60,6 +60,7 @@ public class GameManager : MonoBehaviour
 
             case GameState.Playing:
                 Time.timeScale = 1.0f;
+                SoundManager.Instance.PlaySceneTransition();
                 ViewManager.Instance.Transition(() =>
                     {
                         ViewManager.Instance.ShowGame();
@@ -73,7 +74,7 @@ public class GameManager : MonoBehaviour
 
             case GameState.GameOver:
                 Time.timeScale = 0.0f;
-                ScoreManager.Instance.UpdateBestScore();
+                SoundManager.Instance.PlayGameOver();
                 ViewManager.Instance.ShowGameOver();
                 break;
         }

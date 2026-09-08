@@ -52,6 +52,7 @@ public class BrickController : MonoBehaviour
         transform.localScale = _originalScale * _liftScale;
         Drag(worldPosition);
         _state = BrickState.Placing;
+        SoundManager.Instance.PlayBlockPickUp();
     }
 
     public void Drag(Vector2 worldPosition)
@@ -70,6 +71,7 @@ public class BrickController : MonoBehaviour
         transform.position = position;
         transform.localScale = _originalScale;
         _state = BrickState.Placed;
+        SoundManager.Instance.PlayBlockPlace();
     }
 
     public void CancelDrag()
@@ -77,6 +79,7 @@ public class BrickController : MonoBehaviour
         transform.position = _originalPosition;
         transform.localScale = _originalScale;
         _state = BrickState.Prepared;
+        SoundManager.Instance.PlayBlockReturn();
     }
 
     public void Destroy()

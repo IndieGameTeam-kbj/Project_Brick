@@ -19,6 +19,7 @@ public class BrickSpawner : MonoBehaviour
 
     private IEnumerator SpawnBricksRoutine(BrickController[] bricks)
     {
+        SoundManager.Instance.PlayBlockSpawn();
         for (int i = 0; i < _brickPreparedPoints.Length; i++)
         {
             bricks[i] = SpawnBrick(i);
