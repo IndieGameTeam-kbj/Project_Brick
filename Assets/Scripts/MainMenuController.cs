@@ -1,4 +1,3 @@
-using DG.Tweening.Core.Easing;
 using System.Collections;
 using TMPro;
 using UnityEngine;
@@ -34,10 +33,10 @@ public class MainMenuController : MonoBehaviour
     {
         _bestScoreText.text = ScoreManager.Instance.BestScore.ToString();
     }
+
     private void InitContinueButton()
     {
-        bool hasSaveData =
-            SaveManager.Instance.HasSaveData();
+        bool hasSaveData = SaveManager.Instance.HasSaveData();
 
         _continueButton.SetActive(hasSaveData);
     }
@@ -67,8 +66,8 @@ public class MainMenuController : MonoBehaviour
 
     public void OnClickNewGameButton()
     {
-        GameManager.Instance.StartNewGame();
         SoundManager.Instance.PlayButtonClick();
+        GameManager.Instance.StartNewGame();
         SaveManager.Instance.DeleteGameSave();
     }
 
@@ -77,16 +76,16 @@ public class MainMenuController : MonoBehaviour
         SoundManager.Instance.PlayButtonClick();
     }
 
-    public void OnSoundToggleChanged(bool isSoundOn)
+    public void OnSoundToggleChanged()
     {
-        _isMute = !isSoundOn;
+        _isMute = !_soundToggle.isOn;
 
         ApplySoundSetting();
         SaveManager.Instance.SaveMute(_isMute);
 
         if (!_isMute)
         {
-            SoundManager.Instance.PlayButtonClick();
+            StartCoroutine(PlayClickSound());
         }
     }
 
@@ -96,6 +95,12 @@ public class MainMenuController : MonoBehaviour
 
         Image image = _soundToggle.GetComponent<Image>();
         image.sprite = _isMute ? _muteImage : _soundImage;
+    }
+
+    private IEnumerator PlayClickSound()
+    {
+        yield return null;
+        SoundManager.Instance.PlayButtonClick();
     }
 
 }

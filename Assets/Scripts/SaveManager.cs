@@ -2,11 +2,10 @@ using UnityEngine;
 
 public class SaveManager : MonoBehaviour
 {
-    public static SaveManager Instance { get; private set; }
-
     private const string MuteKey = "IsMute";
     private const string HasSaveKey = "HasSaveData";
 
+    public static SaveManager Instance { get; private set; }
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -14,9 +13,7 @@ public class SaveManager : MonoBehaviour
             Destroy(gameObject);
             return;
         }
-
         Instance = this;
-        DontDestroyOnLoad(gameObject);
     }
 
     public void SaveMute(bool isMuted)
@@ -55,4 +52,5 @@ public class SaveManager : MonoBehaviour
         PlayerPrefs.DeleteKey(HasSaveKey);
         PlayerPrefs.Save();
     }
+
 }

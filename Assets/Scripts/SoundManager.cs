@@ -2,8 +2,6 @@ using UnityEngine;
 
 public class SoundManager : MonoBehaviour
 {
-    public static SoundManager Instance { get; private set; }
-
     [Header("Audio Sources")]
     [SerializeField] private AudioSource _sfxSource;
 
@@ -28,6 +26,7 @@ public class SoundManager : MonoBehaviour
     [SerializeField] private float _minPitch = 0.95f;
     [SerializeField] private float _maxPitch = 1.05f;
 
+    public static SoundManager Instance { get; private set; }
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -35,9 +34,7 @@ public class SoundManager : MonoBehaviour
             Destroy(gameObject);
             return;
         }
-
         Instance = this;
-        DontDestroyOnLoad(gameObject);
     }
 
     // 블록 pickup, place, return, spawn, destroy 사운드 재생
@@ -60,8 +57,6 @@ public class SoundManager : MonoBehaviour
     {
         Play(_blockSpawnSound);
     }
-
-    
 
     public void PlayBlockDestroy(int comboCount = 0)
     {
@@ -134,4 +129,5 @@ public class SoundManager : MonoBehaviour
     {
         _sfxSource.mute = isMuted;
     }
+
 }
