@@ -4,7 +4,6 @@ public class BlockRolling : MonoBehaviour
 {
     [Header("회전 설정")]
     [SerializeField] private float rotationMultiplier = 80f; // 회전 속도를 결정하는 계수
-    [SerializeField] private float minimumSpeed = 0.1f; // 회전이 멈추는 최소 속도
     [SerializeField] private float maxRotationSpeed = 360f; // 최대 회전 속도
     [SerializeField] private float rotationSmoothing = 8f; // 회전 속도 보간 계수
 

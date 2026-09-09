@@ -21,6 +21,12 @@ public class GameManager : MonoBehaviour
             return;
         }
         Instance = this;
+
+        QualitySettings.vSyncCount = 0;
+        Application.targetFrameRate = 60;
+        int targetWidth = 1080;
+        int targetHeight = (int)(((float)Screen.height / Screen.width) * targetWidth);
+        Screen.SetResolution(targetWidth, targetHeight, true);
     }
 
     private void Start()
