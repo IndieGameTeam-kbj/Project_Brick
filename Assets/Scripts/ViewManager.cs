@@ -9,7 +9,8 @@ public class ViewManager : MonoBehaviour
     [SerializeField] private MainMenuController _mainMenuController;
     [SerializeField] private GameObject _game;
     [SerializeField] private GameObject _dimBackGround;
-    [SerializeField] private GameObject _gameOverPopup;
+    [SerializeField] private PausePopup _pausePopup;
+    [SerializeField] private GameOverPopup _gameOverPopup;
     [SerializeField] private Image _screenTransition;
 
     private float _transitionDuration = 0.4f;
@@ -34,8 +35,9 @@ public class ViewManager : MonoBehaviour
         SetMainMenuActive(true);
         _game.SetActive(false);
         _dimBackGround.SetActive(false);
-        _gameOverPopup.SetActive(false);
-        _mainMenuController.Refresh();
+        _pausePopup.gameObject.SetActive(false);
+        _gameOverPopup.gameObject.SetActive(false);
+        _mainMenuController.Init();
     }
 
     public void ShowGame()
@@ -43,19 +45,31 @@ public class ViewManager : MonoBehaviour
         SetMainMenuActive(false);
         _game.SetActive(true);
         _dimBackGround.SetActive(false);
-        _gameOverPopup.SetActive(false);
+        _pausePopup.gameObject.SetActive(false);
+        _gameOverPopup.gameObject.SetActive(false);
+    }
+
+    public void ShowPause()
+    {
+        _dimBackGround.SetActive(true);
+        _pausePopup.gameObject.SetActive(true);
+
+        _pausePopup.Init();
+        PlayPopupOpenAnimation(_pausePopup.GetComponent<RectTransform>(), () =>
+        {
+
+        });
     }
 
     public void ShowGameOver()
     {
         _dimBackGround.SetActive(true);
-        _gameOverPopup.SetActive(true);
+        _gameOverPopup.gameObject.SetActive(true);
 
-        GameOverPopup popup = _gameOverPopup.GetComponent<GameOverPopup>();
-        popup.Init();
-        PlayPopupOpenAnimation(popup.GetComponent<RectTransform>(), () =>
+        _gameOverPopup.Init();
+        PlayPopupOpenAnimation(_gameOverPopup.GetComponent<RectTransform>(), () =>
         {
-            popup.Refresh();
+            _gameOverPopup.Refresh();
         });
     }
 
@@ -63,11 +77,11 @@ public class ViewManager : MonoBehaviour
     {
         _screenTransition.DOKill();
         SetTransitionAlpha(0.0f);
-        _screenTransition.DOFade(1.0f, _transitionDuration).SetEase(Ease.InOutQuad)
+        _screenTransition.DOFade(1.0f, _transitionDuration).SetEase(Ease.InOutQuad).SetUpdate(true)
             .OnComplete(() =>
             {
                 onSwap?.Invoke();
-                _screenTransition.DOFade(0.0f, _transitionDuration).SetEase(Ease.InOutQuad)
+                _screenTransition.DOFade(0.0f, _transitionDuration).SetEase(Ease.InOutQuad).SetUpdate(true)
                     .OnComplete(() =>
                     {
                         onComplete?.Invoke();

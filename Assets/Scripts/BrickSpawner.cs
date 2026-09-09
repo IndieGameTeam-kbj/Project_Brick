@@ -7,8 +7,18 @@ public class BrickSpawner : MonoBehaviour
     [SerializeField] private Transform _brickSpawnPoint;
     [SerializeField] private Transform[] _brickPreparedPoints;
     [SerializeField] private Transform _brickParent;
-    
+
+    private Coroutine _spawnCoroutine;
     private float _spawnInterval = 0.2f;
+
+    public void Reset()
+    {
+        if (_spawnCoroutine != null)
+        {
+            StopCoroutine(_spawnCoroutine);
+            _spawnCoroutine = null;
+        }
+    }
 
     public BrickController[] SpawnBricks()
     {
@@ -19,7 +29,7 @@ public class BrickSpawner : MonoBehaviour
             bricks[i] = SpawnBrick(i);
         }
 
-        StartCoroutine(SpawnBricksRoutine(bricks));
+        _spawnCoroutine = StartCoroutine(SpawnBricksRoutine(bricks));
         return bricks;
     }
 
@@ -41,6 +51,8 @@ public class BrickSpawner : MonoBehaviour
             bricks[i].Spawn();
             yield return new WaitForSeconds(_spawnInterval);
         }
+
+        _spawnCoroutine = null;
     }
     
 }

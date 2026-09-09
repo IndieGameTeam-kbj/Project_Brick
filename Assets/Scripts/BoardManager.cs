@@ -25,6 +25,7 @@ public class BoardManager : MonoBehaviour
 
     public void Reset()
     {
+        _brickSpawner.Reset();
         _board.Reset();
 
         if (_preparedBricks == null) return;

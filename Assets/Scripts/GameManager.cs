@@ -4,6 +4,7 @@ public enum GameState
 {
     MainMenu,
     Playing,
+    Pause,
     GameOver,
 }
 
@@ -29,7 +30,19 @@ public class GameManager : MonoBehaviour
 
     public void StartNewGame()
     {
-        ChangeState(GameState.Playing);
+        SoundManager.Instance.PlaySceneTransition();
+        ViewManager.Instance.Transition(
+            () =>
+            {
+                BoardManager.Instance.Reset();
+                ScoreManager.Instance.Reset();
+                ChangeState(GameState.Playing);
+            },
+            () =>
+            {
+                BoardManager.Instance.StartGame();
+            }
+        );
     }
 
     public void GameOver()
@@ -37,14 +50,24 @@ public class GameManager : MonoBehaviour
         ChangeState(GameState.GameOver);
     }
 
-    public void OnClickHomeButton()
+    public void Home()
     {
         ChangeState(GameState.MainMenu);
     }
 
-    public void OnClickRestartButton()
+    public void Restart()
+    {
+        StartNewGame();
+    }
+
+    public void Resume()
     {
         ChangeState(GameState.Playing);
+    }
+
+    public void OnClickPauseButton()
+    {
+        ChangeState(GameState.Pause);
     }
 
     private void ChangeState(GameState state)
@@ -60,16 +83,12 @@ public class GameManager : MonoBehaviour
 
             case GameState.Playing:
                 Time.timeScale = 1.0f;
-                SoundManager.Instance.PlaySceneTransition();
-                ViewManager.Instance.Transition(() =>
-                    {
-                        ViewManager.Instance.ShowGame();
-                        BoardManager.Instance.Reset();
-                        ScoreManager.Instance.Reset();
-                    },() =>
-                    {
-                        BoardManager.Instance.StartGame();
-                    });
+                ViewManager.Instance.ShowGame();
+                break;
+
+            case GameState.Pause:
+                Time.timeScale = 0.0f;
+                ViewManager.Instance.ShowPause();
                 break;
 
             case GameState.GameOver:

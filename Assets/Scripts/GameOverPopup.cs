@@ -65,4 +65,14 @@ public class GameOverPopup : MonoBehaviour
             });
     }
 
+    public void OnClickHomeButton()
+    {
+        GameManager.Instance.Home();
+    }
+
+    public void OnClickRestartButton()
+    {
+        GameManager.Instance.Restart();
+    }
+
 }
