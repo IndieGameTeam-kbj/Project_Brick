@@ -55,7 +55,7 @@ public class SoundManager : MonoBehaviour
 
     public void PlayBlockSpawn()
     {
-        Play(_blockSpawnSound);
+        Play(_blockSpawnSound, volume: 0.5f);
     }
 
     public void PlayBlockDestroy(int comboCount = 0)
@@ -76,7 +76,7 @@ public class SoundManager : MonoBehaviour
     // UI 버튼 클릭, 게임 오버 사운드 재생
     public void PlayButtonClick()
     {
-        Play(_buttonClickSound);
+        Play(_buttonClickSound, volume: 3f);
     }
 
     public void PlayGameOver()
@@ -107,7 +107,7 @@ public class SoundManager : MonoBehaviour
         Play(clip, pitch);
     }
 
-    private void Play(AudioClip clip, float pitch = 1f)
+    private void Play(AudioClip clip, float pitch = 1f, float volume = 1f)
     {
         if (clip == null || _sfxSource == null)
         {
@@ -115,7 +115,8 @@ public class SoundManager : MonoBehaviour
         }
 
         _sfxSource.pitch = pitch;
-        _sfxSource.PlayOneShot(clip);
+
+        _sfxSource.PlayOneShot(clip, volume);
     }
 
     // 사운드 볼륨 조절 및 음소거 기능
