@@ -40,7 +40,7 @@ public class Board : MonoBehaviour
 
         foreach (BoardSlot slot in _slots)
         {
-            if (!slot.IsPlaced) continue;
+            if (slot == null || !slot.IsPlaced) continue;
 
             Destroy(slot.PlacedBrick.gameObject);
             slot.Clear();
