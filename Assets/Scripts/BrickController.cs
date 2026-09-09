@@ -44,7 +44,6 @@ public class BrickController : MonoBehaviour
         _originalPosition = targetPosition;
         _originalScale = transform.localScale;
         _state = BrickState.Preparing;
-        _animationController.PlaySpawnAnimation(targetPosition, OnSpawnAnimationComplete);
     }
 
     public void BeginDrag(Vector2 worldPosition)
@@ -80,6 +79,12 @@ public class BrickController : MonoBehaviour
         transform.localScale = _originalScale;
         _state = BrickState.Prepared;
         SoundManager.Instance.PlayBlockReturn();
+    }
+
+    public void Spawn()
+    {
+        _state = BrickState.Preparing;
+        _animationController.PlaySpawnAnimation(_originalPosition, OnSpawnAnimationComplete);
     }
 
     public void Destroy()
