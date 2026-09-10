@@ -4,8 +4,11 @@ public class SaveManager : MonoBehaviour
 {
     private const string MuteKey = "IsMute";
     private const string HasSaveKey = "HasSaveData";
+    private const string GameDataKey = "GameData";
+    private const string BestScoreKey = "BestScore";
 
     public static SaveManager Instance { get; private set; }
+
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -13,44 +16,72 @@ public class SaveManager : MonoBehaviour
             Destroy(gameObject);
             return;
         }
+
         Instance = this;
     }
 
+    // 음소거
     public void SaveMute(bool isMuted)
     {
-        int value = isMuted ? 1 : 0;
-
-        PlayerPrefs.SetInt(MuteKey, value);
+        PlayerPrefs.SetInt(MuteKey, isMuted ? 1 : 0);
         PlayerPrefs.Save();
     }
 
     public bool LoadMute()
     {
-        int value = PlayerPrefs.GetInt(MuteKey, 0);
-
-        return value == 1;
+        return PlayerPrefs.GetInt(MuteKey, 0) == 1;
     }
 
-    public void SetHasSaveData(bool hasSaveData)
+    // 최고 점수
+    public void SaveBestScore(int score)
     {
-        int value = hasSaveData ? 1 : 0;
+        PlayerPrefs.SetInt(BestScoreKey, score);
+        PlayerPrefs.Save();
+    }
 
-        PlayerPrefs.SetInt(HasSaveKey, value);
+    public int LoadBestScore()
+    {
+        return PlayerPrefs.GetInt(BestScoreKey, 0);
+    }
+
+    // 현재 판: 점수, 보드 블록, 하단 블록
+    public void SaveGame(GameSaveData data)
+    {
+        string json = JsonUtility.ToJson(data);
+
+        PlayerPrefs.SetString(GameDataKey, json);
+        PlayerPrefs.SetInt(HasSaveKey, 1);
         PlayerPrefs.Save();
     }
 
     public bool HasSaveData()
     {
-        int value = PlayerPrefs.GetInt(HasSaveKey, 0);
+        return PlayerPrefs.GetInt(HasSaveKey, 0) == 1
+            && PlayerPrefs.HasKey(GameDataKey);
+    }
 
-        return value == 1;
+    public GameSaveData LoadGame()
+    {
+        if (!HasSaveData()) return null;
+
+        string json = PlayerPrefs.GetString(GameDataKey);
+        return JsonUtility.FromJson<GameSaveData>(json);
     }
 
     public void DeleteGameSave()
     {
-        // 음소거 설정은 지우지 않고 게임 저장 여부만 지운다.
+        // 현재 판만 삭제. 최고 점수와 음소거는 유지.
+        PlayerPrefs.DeleteKey(GameDataKey);
         PlayerPrefs.DeleteKey(HasSaveKey);
         PlayerPrefs.Save();
     }
 
+    [ContextMenu("Clear All Save Data")]
+    private void ClearAllSaveData()
+    {
+        PlayerPrefs.DeleteAll();
+        PlayerPrefs.Save();
+
+        Debug.Log("저장 데이터 초기화 완료");
+    }
 }

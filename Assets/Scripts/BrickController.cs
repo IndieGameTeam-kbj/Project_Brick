@@ -104,4 +104,15 @@ public class BrickController : MonoBehaviour
         Destroy(gameObject);
     }
 
+    // 저장된 블록을 소리 없이 복원하는 메서드   
+    /*public void RestoreAt(Vector3 position, bool placed)
+    {
+        transform.position = position;
+        transform.localScale = _originalScale;
+
+        _state = placed
+            ? BrickState.Placed
+            : BrickState.Prepared;
+    }*/
+
 }

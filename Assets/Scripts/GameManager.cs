@@ -11,6 +11,9 @@ public enum GameState
 public class GameManager : MonoBehaviour
 {
     private GameState _state;
+    private bool _hasCurrentGame;
+    public bool CanContinue =>
+        _hasCurrentGame || SaveManager.Instance.HasSaveData();
 
     public static GameManager Instance { get; private set; }
     private void Awake()
@@ -31,6 +34,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        ScoreManager.Instance.Init();
         ChangeState(GameState.MainMenu);
     }
 
@@ -47,6 +51,22 @@ public class GameManager : MonoBehaviour
             () =>
             {
                 BoardManager.Instance.StartGame();
+            }
+        );
+    }
+
+    public void ContinueGame()
+    {
+        SoundManager.Instance.PlaySceneTransition();
+
+        ViewManager.Instance.Transition(
+            () =>
+            {
+                ChangeState(GameState.Playing);
+            },
+            () =>
+            {
+                // 새 블록을 생성하거나 보드를 Reset하지 않는다.
             }
         );
     }

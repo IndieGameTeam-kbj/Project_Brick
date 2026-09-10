@@ -31,6 +31,11 @@ public class ScoreManager : MonoBehaviour
         Instance = this;
     }
 
+    public void Init()
+    {
+        _bestScore = SaveManager.Instance.LoadBestScore();
+    }
+
     public void Reset()
     {
         _score = 0;
@@ -53,7 +58,7 @@ public class ScoreManager : MonoBehaviour
                 SoundManager.Instance.PlayBestScores();
                 _isNewBestScore = true;
             }
-
+            SaveManager.Instance.SaveBestScore(_score);
             _bestScore = _score;
         }
 

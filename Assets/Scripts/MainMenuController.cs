@@ -6,7 +6,7 @@ public class MainMenuController : MonoBehaviour
 {
     [SerializeField] private LogoAlphabet[] _logoAlphabets = new LogoAlphabet[6];
     [SerializeField] private TMP_Text _bestScoreText;
-    [SerializeField] private GameObject _continueButton;
+    [SerializeField] private TMP_Text _playButtonText;
     [SerializeField] private SoundToggle _soundToggle;
     
     [SerializeField] private float _logoAnimationDelay = 0.05f;
@@ -19,14 +19,17 @@ public class MainMenuController : MonoBehaviour
     public void Init()
     {
         _bestScoreText.text = ScoreManager.Instance.BestScore.ToString();
-        InitContinueButton();
+        InitPlayButton();
         _soundToggle.Init();
     }
 
-    private void InitContinueButton()
+    private void InitPlayButton()
     {
         bool hasSaveData = SaveManager.Instance.HasSaveData();
-        _continueButton.SetActive(hasSaveData);
+
+        _playButtonText.text = hasSaveData
+            ? "Continue"
+            : "New Game";
     }
 
     private IEnumerator PlayLogoAnimation()
@@ -43,16 +46,17 @@ public class MainMenuController : MonoBehaviour
         }
     }
 
-    public void OnClickNewGameButton()
+    public void OnClickPlayButton()
     {
         SoundManager.Instance.PlayButtonClick();
-        SaveManager.Instance.DeleteGameSave();
-        GameManager.Instance.StartNewGame();
-    }
 
-    public void OnClickContinueButton()
-    {
-        SoundManager.Instance.PlayButtonClick();
+        if (SaveManager.Instance.HasSaveData())
+        {
+            GameManager.Instance.ContinueGame();
+        }
+        else
+        {
+            GameManager.Instance.StartNewGame();
+        }
     }
-
 }
