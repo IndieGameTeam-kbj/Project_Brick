@@ -67,11 +67,13 @@ public class GameOverPopup : MonoBehaviour
 
     public void OnClickHomeButton()
     {
+        SoundManager.Instance.PlayButtonClick();
         GameManager.Instance.Home();
     }
 
     public void OnClickRestartButton()
     {
+        SoundManager.Instance.PlayButtonClick();
         GameManager.Instance.Restart();
     }
 

@@ -73,6 +73,7 @@ public class GameManager : MonoBehaviour
 
     public void OnClickPauseButton()
     {
+        SoundManager.Instance.PlayButtonClick();
         ChangeState(GameState.Pause);
     }
 
