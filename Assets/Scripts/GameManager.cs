@@ -106,4 +106,29 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        if (InputManager.Instance.IsBackPressed)
+        {
+            switch (_state)
+            {
+                case GameState.MainMenu:
+                    Application.Quit();
+                    break;
+
+                case GameState.Playing:
+                    OnClickPauseButton();
+                    break;
+
+                case GameState.Pause:
+                    Resume();
+                    break;
+
+                case GameState.GameOver:
+                    Home();
+                    break;
+            }
+        }
+    }
+
 }
