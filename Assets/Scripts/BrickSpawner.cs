@@ -8,6 +8,7 @@ public class BrickSpawner : MonoBehaviour
     [SerializeField] private Transform[] _brickPreparedPoints;
     [SerializeField] private Transform _brickParent;
 
+    public Transform[] PreparedPoints => _brickPreparedPoints;
     private Coroutine _spawnCoroutine;
     private float _spawnInterval = 0.2f;
 
@@ -54,5 +55,4 @@ public class BrickSpawner : MonoBehaviour
 
         _spawnCoroutine = null;
     }
-    
 }

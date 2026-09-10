@@ -105,7 +105,7 @@ public class BrickController : MonoBehaviour
     }
 
     // 저장된 블록을 소리 없이 복원하는 메서드   
-    /*public void RestoreAt(Vector3 position, bool placed)
+    public void RestoreAt(Vector3 position, bool placed)
     {
         transform.position = position;
         transform.localScale = _originalScale;
@@ -113,6 +113,6 @@ public class BrickController : MonoBehaviour
         _state = placed
             ? BrickState.Placed
             : BrickState.Prepared;
-    }*/
+    }
 
 }

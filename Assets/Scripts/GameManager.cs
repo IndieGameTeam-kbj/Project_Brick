@@ -11,9 +11,16 @@ public enum GameState
 public class GameManager : MonoBehaviour
 {
     private GameState _state;
+    public GameState State => _state;
+
     private bool _hasCurrentGame;
+    private bool _isTransitioning;
+
     public bool CanContinue =>
         _hasCurrentGame || SaveManager.Instance.HasSaveData();
+
+    public bool CanControlBoard =>
+        _state == GameState.Playing && !_isTransitioning;
 
     public static GameManager Instance { get; private set; }
     private void Awake()
@@ -34,45 +41,75 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        ScoreManager.Instance.Init();
         ChangeState(GameState.MainMenu);
     }
 
     public void StartNewGame()
     {
+        if (_isTransitioning) return;
+
+        _isTransitioning = true;
         SoundManager.Instance.PlaySceneTransition();
+
         ViewManager.Instance.Transition(
             () =>
             {
+                SaveManager.Instance.DeleteGameSave();
+
                 BoardManager.Instance.Reset();
                 ScoreManager.Instance.Reset();
+
+                _hasCurrentGame = true;
                 ChangeState(GameState.Playing);
             },
             () =>
             {
                 BoardManager.Instance.StartGame();
+                _isTransitioning = false;
             }
         );
     }
 
     public void ContinueGame()
     {
+        if (_isTransitioning || !CanContinue) return;
+
+        GameSaveData data = null;
+
+        if (!_hasCurrentGame)
+        {
+            data = SaveManager.Instance.LoadGame();
+            if (data == null) return;
+        }
+
+        _isTransitioning = true;
         SoundManager.Instance.PlaySceneTransition();
 
         ViewManager.Instance.Transition(
             () =>
             {
+                // 현재 판이 없을 때만 저장 데이터 복원
+                if (!_hasCurrentGame)
+                {
+                    BoardManager.Instance.RestoreGame(data);
+                    ScoreManager.Instance.RestoreScore(data);
+
+                    _hasCurrentGame = true;
+                }
+
                 ChangeState(GameState.Playing);
             },
             () =>
             {
-                // 새 블록을 생성하거나 보드를 Reset하지 않는다.
+                _isTransitioning = false;
             }
         );
     }
 
     public void GameOver()
     {
+        _hasCurrentGame = false;
+        SaveManager.Instance.DeleteGameSave();
         ChangeState(GameState.GameOver);
     }
 

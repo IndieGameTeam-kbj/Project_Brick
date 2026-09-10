@@ -4,11 +4,14 @@ public class BoardManager : MonoBehaviour
 {
     [SerializeField] private BrickSpawner _brickSpawner;
     [SerializeField] private Board _board;
+    [SerializeField] private BrickFactory _brickFactory;
 
     private BrickController[] _preparedBricks;
     private Camera _mainCamera;
     private BrickController _draggingBrick;
     private float _dragScreenYOffset = 100.0f;
+
+    private bool _savePending; // 저장 해야 하는지 여부
 
     public static BoardManager Instance { get; private set; }
     private void Awake()
@@ -25,6 +28,7 @@ public class BoardManager : MonoBehaviour
 
     public void Reset()
     {
+        _savePending = false;
         _brickSpawner.Reset();
         _board.Reset();
 
@@ -43,6 +47,8 @@ public class BoardManager : MonoBehaviour
     public void StartGame()
     {
         _preparedBricks = _brickSpawner.SpawnBricks();
+
+        _savePending = true;
     }
 
     private void Update()
@@ -114,6 +120,7 @@ public class BoardManager : MonoBehaviour
         }
 
         RemovePreparedBrick(_draggingBrick);
+        _savePending = true;
     }
 
     private void RemovePreparedBrick(BrickController brick)
@@ -142,4 +149,54 @@ public class BoardManager : MonoBehaviour
         return true;
     }
 
+    private void LateUpdate() // Update 후에 저장 시도
+    {
+        if (!_savePending) return;
+
+        // 끝난 판을 다시 저장하지 않음
+        if (GameManager.Instance.State == GameState.GameOver)
+        {
+            _savePending = false;
+            return;
+        }
+
+        if (_draggingBrick != null) return;
+        if (_preparedBricks == null) return;
+
+        // 하단 블록 등장 애니메이션이 끝나야 저장
+        foreach (BrickController brick in _preparedBricks)
+        {
+            if (brick != null && brick.State != BrickState.Prepared)
+            {
+                return;
+            }
+        }
+
+        SaveCurrentGame();
+        _savePending = false;
+    }
+
+    private void SaveCurrentGame()
+    {
+        SaveManager.Instance.SaveBoard(
+            _board.Slots,
+            _preparedBricks,
+            ScoreManager.Instance
+        );
+    }
+
+    public void RestoreGame(GameSaveData data)
+    {
+        Reset();
+
+        _brickFactory.RestoreBoard(
+            data.boardBricks,
+            _board.Slots
+        );
+
+        _preparedBricks = _brickFactory.RestorePrepared(
+            data.preparedTypes,
+            _brickSpawner.PreparedPoints
+        );
+    }
 }

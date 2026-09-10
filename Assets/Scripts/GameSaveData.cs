@@ -5,7 +5,6 @@ using System.Collections.Generic;
 public class GameSaveData
 {
     public int score;
-    public int prevBestScore;
     public bool isNewBestScore;
 
     public List<BrickSaveData> boardBricks = new List<BrickSaveData>();

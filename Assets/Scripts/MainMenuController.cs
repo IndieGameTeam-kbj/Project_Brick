@@ -18,7 +18,7 @@ public class MainMenuController : MonoBehaviour
 
     public void Init()
     {
-        _bestScoreText.text = ScoreManager.Instance.BestScore.ToString();
+        _bestScoreText.text = SaveManager.Instance.LoadBestScore().ToString();
         InitPlayButton();
         _soundToggle.Init();
     }

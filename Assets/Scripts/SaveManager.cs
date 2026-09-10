@@ -84,4 +84,42 @@ public class SaveManager : MonoBehaviour
 
         Debug.Log("저장 데이터 초기화 완료");
     }
+
+    public void SaveBoard(
+    BoardSlot[,] slots,
+    BrickController[] preparedBricks,
+    ScoreManager scoreManager)
+    {
+        GameSaveData data = new GameSaveData
+        {
+            score = scoreManager.Score,
+            isNewBestScore = scoreManager.IsNewBestScore,
+
+            preparedTypes = new int[preparedBricks.Length]
+        };
+
+        // 보드 위 블록 정보 수집
+        foreach (BoardSlot slot in slots)
+        {
+            if (!slot.IsPlaced || slot.PlacedBrick == null) continue;
+
+            data.boardBricks.Add(new BrickSaveData
+            {
+                type = slot.PlacedBrick.Types[0],
+                row = slot.Row,
+                column = slot.Column
+            });
+        }
+
+        // 하단 블록 정보 수집
+        for (int i = 0; i < preparedBricks.Length; i++)
+        {
+            data.preparedTypes[i] = preparedBricks[i] == null
+                ? -1
+                : (int)preparedBricks[i].Types[0];
+        }
+
+        // 기존 저장 함수 호출
+        SaveGame(data);
+    }
 }

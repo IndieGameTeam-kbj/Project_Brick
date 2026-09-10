@@ -14,6 +14,7 @@ public class Board : MonoBehaviour
     private List<List<BoardSlot>> _destructionOrder = new List<List<BoardSlot>>();
     private float _destroyInterval = 0.2f;
 
+    public BoardSlot[,] Slots => _slots;
     public event Action<int> LineDestroyed;
 
     private void Awake()

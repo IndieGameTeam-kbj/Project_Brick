@@ -699,6 +699,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BoardManager
   _brickSpawner: {fileID: 1885371251}
   _board: {fileID: 1885371250}
+  _brickFactory: {fileID: 1668877530}
 --- !u!1 &252000919
 GameObject:
   m_ObjectHideFlags: 0
@@ -2201,7 +2202,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &803056096
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2938,7 +2939,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 803056097}
         m_TargetAssemblyTypeName: MainMenuController, Assembly-CSharp
-        m_MethodName: OnClickNewGameButton
+        m_MethodName: OnClickPlayButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5582,6 +5583,56 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2a1d398dcd86ce449b1577fd90a181e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BoardSlot
+--- !u!1 &1668877529
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1668877531}
+  - component: {fileID: 1668877530}
+  m_Layer: 0
+  m_Name: BrickFactory
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1668877530
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1668877529}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b6c75e7d0af12b4a95b8b3c22f0ff39, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BrickFactory
+  _brickPrefabs:
+  - {fileID: 9097663397063738304, guid: de31a8aee93c58b429721ea1c5279736, type: 3}
+  - {fileID: 9097663397063738304, guid: 4c280c3add0dd954c8213312dcc7c85f, type: 3}
+  - {fileID: 9097663397063738304, guid: bda66e85279971a48b7559764ea8cdd2, type: 3}
+  - {fileID: 9097663397063738304, guid: 7c9becc6691d0394a952a8229de28754, type: 3}
+  _brickParent: {fileID: 1748827469}
+--- !u!4 &1668877531
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1668877529}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1669461863
 GameObject:
   m_ObjectHideFlags: 0
@@ -6649,7 +6700,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ad091844cc1ade4ea1f4132c8036f55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BrickSpawner
-  _brickPrefabs: []
+  _brickPrefabs:
+  - {fileID: 9097663397063738304, guid: de31a8aee93c58b429721ea1c5279736, type: 3}
+  - {fileID: 9097663397063738304, guid: 4c280c3add0dd954c8213312dcc7c85f, type: 3}
+  - {fileID: 9097663397063738304, guid: bda66e85279971a48b7559764ea8cdd2, type: 3}
+  - {fileID: 9097663397063738304, guid: 7c9becc6691d0394a952a8229de28754, type: 3}
   _brickSpawnPoint: {fileID: 1032093302}
   _brickPreparedPoints:
   - {fileID: 982603346}
@@ -7487,3 +7542,4 @@ SceneRoots:
   - {fileID: 1063608962}
   - {fileID: 787896998}
   - {fileID: 1768038277}
+  - {fileID: 1668877531}

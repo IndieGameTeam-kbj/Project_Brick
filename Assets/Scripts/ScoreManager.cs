@@ -31,9 +31,12 @@ public class ScoreManager : MonoBehaviour
         Instance = this;
     }
 
-    public void Init()
+    public void RestoreScore(GameSaveData data)
     {
-        _bestScore = SaveManager.Instance.LoadBestScore();
+        _score = data.score;
+        _isNewBestScore = data.isNewBestScore;
+
+        _scoreText.text = _score.ToString();
     }
 
     public void Reset()
