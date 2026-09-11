@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public enum BrickState
@@ -50,8 +49,6 @@ public class BrickController : MonoBehaviour
     public BrickAnimationController AnimationController => _animationController;
     public float DragZ => _originalZ + _liftZ;
     public BrickState State => _state;
-
-    public event Action Destroyed;
 
     public void Init(Vector3 targetPosition)
     {
@@ -116,7 +113,6 @@ public class BrickController : MonoBehaviour
 
     private void OnDestroyAnimationComplete()
     {
-        Destroyed?.Invoke();
         Destroy(gameObject);
     }
 

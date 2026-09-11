@@ -326,7 +326,7 @@ public class Board : MonoBehaviour
 
                 if (brick == null) continue;
 
-                brick.Destroyed += slot.Clear;
+                slot.Clear();
                 brick.Destroy();
                 SoundManager.Instance.PlayBlockDestroy(destroyedBrickCount);
                 destroyedBrickCount++;
@@ -335,6 +335,8 @@ public class Board : MonoBehaviour
             yield return new WaitForSeconds(_destroyInterval);
         }
 
+        // 저장 요청
+        BoardManager.Instance.RequestSave();
         // 점수는 이미 올랐고, 여기서는 숫자 연출만 실행
         ScoreManager.Instance.ShowScore();
     }

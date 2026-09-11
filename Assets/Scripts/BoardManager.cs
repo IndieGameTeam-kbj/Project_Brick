@@ -10,7 +10,7 @@ public class BoardManager : MonoBehaviour
     private BrickController _draggingBrick;
     private float _dragScreenYOffset = 100.0f;
 
-    private bool _savePending; // 저장 해야 하는지 여부
+    private bool _savePending = false;
 
     public static BoardManager Instance { get; private set; }
     private void Awake()
@@ -43,11 +43,16 @@ public class BoardManager : MonoBehaviour
         _draggingBrick = null;
     }
 
+    public void RequestSave()
+    {
+        _savePending = true;
+    }
+
     public void StartGame()
     {
         _preparedBricks = _brickSpawner.SpawnBricks();
 
-        _savePending = true;
+        RequestSave();
     }
 
     private void Update()
@@ -119,7 +124,7 @@ public class BoardManager : MonoBehaviour
         }
 
         RemovePreparedBrick(_draggingBrick);
-        _savePending = true;
+        RequestSave();
     }
 
     private void RemovePreparedBrick(BrickController brick)
