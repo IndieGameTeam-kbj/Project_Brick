@@ -4,7 +4,6 @@ public class BoardManager : MonoBehaviour
 {
     [SerializeField] private BrickSpawner _brickSpawner;
     [SerializeField] private Board _board;
-    [SerializeField] private BrickFactory _brickFactory;
 
     private BrickController[] _preparedBricks;
     private Camera _mainCamera;
@@ -178,25 +177,15 @@ public class BoardManager : MonoBehaviour
 
     private void SaveCurrentGame()
     {
-        SaveManager.Instance.SaveBoard(
-            _board.Slots,
-            _preparedBricks,
-            ScoreManager.Instance
-        );
+        SaveManager.Instance.SaveBoard( _board.Slots, _preparedBricks, ScoreManager.Instance );
     }
 
     public void RestoreGame(GameSaveData data)
     {
         Reset();
 
-        _brickFactory.RestoreBoard(
-            data.boardBricks,
-            _board.Slots
-        );
+        _brickSpawner.RestoreBoard( data.boardBricks, _board.Slots );
 
-        _preparedBricks = _brickFactory.RestorePrepared(
-            data.preparedTypes,
-            _brickSpawner.PreparedPoints
-        );
+        _preparedBricks = _brickSpawner.RestorePrepared( data.preparedTypes );
     }
 }
