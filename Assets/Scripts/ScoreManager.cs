@@ -36,6 +36,13 @@ public class ScoreManager : MonoBehaviour
         _score = data.score;
         _isNewBestScore = data.isNewBestScore;
 
+        RefreshScore();
+    }
+
+    public void RefreshScore()
+    {
+        _scoreText.transform.DOKill();
+        _scoreText.transform.localScale = Vector3.one;
         _scoreText.text = _score.ToString();
     }
 
@@ -50,7 +57,6 @@ public class ScoreManager : MonoBehaviour
 
     private void AddScore(int amount)
     {
-        int previousScore = _score;
         _score += amount;
 
         if (_score > _bestScore)
@@ -64,8 +70,12 @@ public class ScoreManager : MonoBehaviour
             SaveManager.Instance.SaveBestScore(_score);
             _bestScore = _score;
         }
+    }
 
-        PlayScoreAnimation(previousScore, _score);
+    public void ShowScore()
+    {
+        int.TryParse(_scoreText.text, out int displayedScore);
+        PlayScoreAnimation(displayedScore, _score);
     }
 
     private void PlayScoreAnimation(int previousScore, int targetScore)

@@ -93,8 +93,11 @@ public class GameManager : MonoBehaviour
                 {
                     BoardManager.Instance.RestoreGame(data);
                     ScoreManager.Instance.RestoreScore(data);
-
                     _hasCurrentGame = true;
+                }
+                else
+                {
+                    ScoreManager.Instance.RefreshScore();
                 }
 
                 ChangeState(GameState.Playing);

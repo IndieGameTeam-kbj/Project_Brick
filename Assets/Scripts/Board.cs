@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 public class Board : MonoBehaviour
 {
@@ -213,6 +214,23 @@ public class Board : MonoBehaviour
         
         List<List<BoardSlot>> destructionOrder = _destructionOrder;
         _destructionOrder = new List<List<BoardSlot>>();
+
+        // 파괴 대상이 중복돼도 한 번만 계산
+        HashSet<BrickController> targets = new HashSet<BrickController>();
+
+        foreach (List<BoardSlot> level in destructionOrder)
+        {
+            foreach (BoardSlot slot in level)
+            {
+                if (slot.PlacedBrick != null &&
+                    slot.PlacedBrick.State != BrickState.Destroying)
+                {
+                    targets.Add(slot.PlacedBrick);
+                }
+            }
+        }
+
+        LineDestroyed?.Invoke(targets.Count);
         StartCoroutine(DestroyLine(destructionOrder));
         
         return true;
@@ -317,8 +335,8 @@ public class Board : MonoBehaviour
             yield return new WaitForSeconds(_destroyInterval);
         }
 
-        LineDestroyed?.Invoke(destroyedBrickCount);
-        _destructionOrder.Clear();
+        // 점수는 이미 올랐고, 여기서는 숫자 연출만 실행
+        ScoreManager.Instance.ShowScore();
     }
 
     private bool IsFull()
