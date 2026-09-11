@@ -152,6 +152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b30964de7792f34f81eac1236316041, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BrickController
+  _kind: 3
   _types: 03000000
 --- !u!114 &1436866779738255174
 MonoBehaviour:

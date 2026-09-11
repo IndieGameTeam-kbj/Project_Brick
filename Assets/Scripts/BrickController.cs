@@ -18,8 +18,23 @@ public enum BrickType
     DiagonalDownward,
 }
 
+public enum BrickKind
+{
+    Horizontal,
+    Vertical,
+    DiagonalUpward,
+    DiagonalDownward,
+    Cross,
+    DiagonalCross,
+    Horizontal_DiagonalUpward,
+    Horizontal_DiagonalDownward,
+    Vertical_DiagonalUpward,
+    Vertical_DiagonalDownward,
+}
+
 public class BrickController : MonoBehaviour
 {
+    [SerializeField] private BrickKind _kind;
     [SerializeField] private BrickType[] _types;
 
     private BrickAnimationController _animationController;
@@ -31,6 +46,7 @@ public class BrickController : MonoBehaviour
     private BrickState _state;
 
     public BrickType[] Types => _types;
+    public BrickKind Kind => _kind;
     public BrickAnimationController AnimationController => _animationController;
     public float DragZ => _originalZ + _liftZ;
     public BrickState State => _state;

@@ -186,6 +186,6 @@ public class BoardManager : MonoBehaviour
 
         _brickSpawner.RestoreBoard( data.boardBricks, _board.Slots );
 
-        _preparedBricks = _brickSpawner.RestorePrepared( data.preparedTypes );
+        _preparedBricks = _brickSpawner.RestorePrepared( data.preparedKinds );
     }
 }

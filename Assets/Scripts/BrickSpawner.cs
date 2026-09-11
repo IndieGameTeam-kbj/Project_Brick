@@ -57,30 +57,27 @@ public class BrickSpawner : MonoBehaviour
         _spawnCoroutine = null;
     }
 
-    private GameObject GetPrefabByType(BrickType type)
+    private GameObject GetPrefabByKind(BrickKind kind)
     {
         foreach (GameObject prefab in _brickPrefabs)
         {
             BrickController brick = prefab.GetComponent<BrickController>();
 
-            if (brick.Types[0] == type)
+            if (brick.Kind == kind)
             {
                 return prefab;
             }
         }
 
         throw new System.InvalidOperationException(
-            $"타입에 맞는 프리팹이 없습니다: {type}"
+            $"타입에 맞는 프리팹이 없습니다: {kind}"
         );
     }
 
-    private BrickController Create(
-        BrickType type,
-        Vector3 position,
-        bool placed)
+    private BrickController Create(BrickKind kind, Vector3 position, bool placed)
     {
         GameObject spawnedObject = Instantiate(
-            GetPrefabByType(type),
+            GetPrefabByKind(kind),
             position,
             Quaternion.identity,
             _brickParent
@@ -94,29 +91,27 @@ public class BrickSpawner : MonoBehaviour
         return brick;
     }
 
-    public void RestoreBoard(
-        List<BrickSaveData> data,
-        BoardSlot[,] slots)
+    public void RestoreBoard(List<BrickSaveData> data, BoardSlot[,] slots)
     {
         foreach (BrickSaveData saved in data)
         {
             BoardSlot slot = slots[saved.row, saved.column];
 
-            BrickController brick = Create(saved.type, slot.transform.position, true);
+            BrickController brick = Create(saved.kind, slot.transform.position, true);
 
             slot.Place(brick);
         }
     }
 
-    public BrickController[] RestorePrepared(int[] types)
+    public BrickController[] RestorePrepared(int[] kinds)
     {
         BrickController[] bricks = new BrickController[_brickPreparedPoints.Length];
 
         for (int i = 0; i < bricks.Length; i++)
         {
-            if (types[i] == -1) continue;
+            if (kinds[i] == -1) continue;
 
-            bricks[i] = Create( (BrickType)types[i], _brickPreparedPoints[i].position, false );
+            bricks[i] = Create( (BrickKind)kinds[i], _brickPreparedPoints[i].position, false );
         }
 
         return bricks;

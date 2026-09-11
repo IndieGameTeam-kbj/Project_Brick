@@ -10,13 +10,13 @@ public class GameSaveData
     public List<BrickSaveData> boardBricks = new List<BrickSaveData>();
 
     // 하단 칸마다 종류 저장. -1이면 빈칸.
-    public int[] preparedTypes;
+    public int[] preparedKinds;
 }
 
 [Serializable]
 public class BrickSaveData
 {
-    public BrickType type;
+    public BrickKind kind;
     public int row;
     public int column;
 }

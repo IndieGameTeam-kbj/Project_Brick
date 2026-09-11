@@ -95,7 +95,7 @@ public class SaveManager : MonoBehaviour
             score = scoreManager.Score,
             isNewBestScore = scoreManager.IsNewBestScore,
 
-            preparedTypes = new int[preparedBricks.Length]
+            preparedKinds = new int[preparedBricks.Length]
         };
 
         // 보드 위 블록 정보 수집
@@ -105,7 +105,7 @@ public class SaveManager : MonoBehaviour
 
             data.boardBricks.Add(new BrickSaveData
             {
-                type = slot.PlacedBrick.Types[0],
+                kind = slot.PlacedBrick.Kind,
                 row = slot.Row,
                 column = slot.Column
             });
@@ -114,9 +114,9 @@ public class SaveManager : MonoBehaviour
         // 하단 블록 정보 수집
         for (int i = 0; i < preparedBricks.Length; i++)
         {
-            data.preparedTypes[i] = preparedBricks[i] == null
+            data.preparedKinds[i] = preparedBricks[i] == null
                 ? -1
-                : (int)preparedBricks[i].Types[0];
+                : (int)preparedBricks[i].Kind;
         }
 
         // 기존 저장 함수 호출
